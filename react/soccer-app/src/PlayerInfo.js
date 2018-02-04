@@ -4,6 +4,7 @@ const PlayerInfo = (props) => {
 
   return (
     <div>
+      Hi.
       <h3>{props.player.name}</h3>
       <h4>{props.player.position}</h4>
 

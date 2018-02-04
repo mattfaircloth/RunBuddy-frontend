@@ -12,38 +12,47 @@ class TeamDetail extends React.Component {
   }
 
   handlePlayerClick = (event) => {
+    //debugger
     event.preventDefault();
     this.setState(previousState => {
       return {
-        infoDisplayed: !previousState.infoDisplayed,
-        player: event.target.innerText
+        infoDisplayed: !previousState.infoDisplayed
       }
     })
   }
 
-  render() {
-    // let infoDetails;
-    // console.log(this.state)
-    // if (this.state.infoDisplayed === true) {
-    //   infoDetails = <PlayerInfo player={this.state.player}/>
-    // } else {
-    //   infoDetails = <p>See Player Info</p>
-    // }
+  // selectPlayer = (event) => {
+  //   this.setState({
+  //     player: event.target.id
+  //   })
+  // }
 
-    let eachPlayer = this.props.players.map(player => <div>
-      <ul>
-      <li className='player-name' onClick={this.handlePlayerClick}>{player.name}</li>
-      </ul>
+  //onClick={this.handlePlayerClick} onClick={this.selectPlayer}
+
+  render() {
+    let infoDetails = this.props.players.map(player =>  <div className='playerTile' key={player.name}>
+      <h3 className='player-name' id={player.name}>Name: {player.name}</h3>
+      <h4>Position: {player.position}</h4>
+      <h4>Nationality:{player.nationality}</h4>
       </div>)
+
+    console.log(this.state)
+    let playerDetails;
+    // if (this.state.infoDisplayed === true) {
+    //   playerDetails = <PlayerInfo player={this.state.player}/>
+    // } else {
+    //   playerDetails = <div><p></p></div>
+    // }
 
     return (
       <div>
-        {eachPlayer}
+      {infoDetails}
+      <div>
+      {playerDetails}
+      </div>
       </div>
     )
-
   }
-
 }
 
 export default TeamDetail

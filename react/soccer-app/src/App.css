@@ -10,6 +10,16 @@
 
 .navWrapper {
   margin-bottom: 2%;
+  background-color: grey;
+  outline: #3B0B0B groove thick;
+  outline-color: red;
+  text-align: center;
+}
+
+.search-bar {
+  text-align: center;
+  background-color:#FFF;
+    height: 1.5em;
 }
 
 .filterWrapper {
@@ -81,7 +91,8 @@ ul {
 
 
 .teamTile {
-  display: inline;
+  display: flex;
+  position: relative;
   background-repeat: no-repeat;
   background-position: center 90%;
   float: left;
@@ -91,6 +102,17 @@ ul {
   outline-color: red;
   transition: 0.75s;
   opacity: 1;
+}
+
+.playerTile {
+  outline: #3B0B0B groove thin;
+  outline-color: grey;
+}
+
+.details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .minBackgroundSneak {

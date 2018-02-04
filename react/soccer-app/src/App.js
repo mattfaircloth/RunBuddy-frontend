@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import TeamContainer from './TeamContainer'
 import Navbar from './Navbar'
@@ -7,7 +6,8 @@ import Navbar from './Navbar'
 class App extends Component {
 
   state = {
-    teams: []
+    teams: [],
+    searchTerm: ''
   }
 
   componentDidMount() {
@@ -18,14 +18,19 @@ class App extends Component {
     })
       .then(response => response.json())
       .then((response => this.setState({ teams: response.teams })))
-        //
-
   }
+
+  handleInput = (event) => {
+    this.setState({
+      searchTerm: event.target.value,
+    })
+  }
+
   render() {
     return (
       <div>
       <Navbar />
-      <TeamContainer teams={this.state.teams} />
+      <TeamContainer teams={this.state.teams} searchTerm={this.state.searchTerm} handleInput={this.handleInput}/>
       </div>
     );
   }

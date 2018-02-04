@@ -44,14 +44,14 @@ class TeamItem extends React.Component {
     if (this.state.detailsDisplayed === true) {
       showDetails = <TeamDetail players={this.state.players}/>
     } else {
-      showDetails = <p>See Players!</p>
+      showDetails = <div><p></p></div>
     }
 
 
     return (
-      <div className='teamTile' onClick={this.handleTeamClick}>
-        <h3>{this.props.team.name}</h3>
-        <img className='team-image' src={this.props.team.crestUrl}/>
+      <div className='teamTile'>
+        <h3 onClick={this.handleTeamClick}>{this.props.team.name}</h3>
+        <img className='team-image' src={this.props.team.crestUrl} alt=''/>
         <div>
           {showDetails}
         </div>
