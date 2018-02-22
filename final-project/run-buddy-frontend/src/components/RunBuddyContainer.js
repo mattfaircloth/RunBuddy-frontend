@@ -1,19 +1,14 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom'
 import WorkoutsContainer from './WorkoutsContainer'
 import WorkoutForm from './WorkoutForm'
 import NavBar from './NavBar'
+import { connect } from 'react-redux'
+import * as actions from '../actions/index'
+import withAuth from '../hocs/withAuth'
 
 class RunBuddyContainer extends React.Component {
-  state = {
-    workouts: []
-  }
 
-  // componentDidMount = () => {
-  //   fetch('http://localhost:3001/api/v1/workouts')
-  //   .then(res => res.json())
-  //   .then(data => this.setState({workouts: data}))
-  // }
 
   render() {
     return (
@@ -31,4 +26,11 @@ class RunBuddyContainer extends React.Component {
 
 }
 
-export default RunBuddyContainer
+const mapStateToProps = state => {
+  return {
+    currentUser: state.currentUser,
+    currentPosition: state.currentPosition
+  }
+}
+
+export default connect(mapStateToProps, actions)(withAuth(RunBuddyContainer));

@@ -46,3 +46,25 @@ export function getLocation() {
     })
   }
 }
+
+export function getVacancyGeoLocation(address) {
+  return (dispatch) => {
+    return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyDj4EgDdvqF-dM2DvOD49jKe9uMyuIUo0M`)
+    .then(resp => resp.json())
+  }
+}
+
+export function postWorkout(data) {
+  return (dispatch) => {
+    return fetch('http://localhost:3001/api/v1/workouts', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({data})
+    }).then(resp => resp.json())
+    .then(json => {
+      const {start_time, activity, address, distance, pace, id} = json
+      const workout = {start_time, activity, address, distance, pace, id}
+      dispatch({ type: 'UPDATE_USER_WORKOUTS', workout })
+    })
+  }
+}

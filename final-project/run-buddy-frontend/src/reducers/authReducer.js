@@ -6,7 +6,7 @@ export function authReducer(state = {}, action) {
     case 'LOGOUT_USER':
       return {};
     case 'UPDATE_USER_WORKOUTS':
-      return {...state, workouts: action.workouts};
+      return {...state, workouts: action.workout};
     default:
       return state;
   }
