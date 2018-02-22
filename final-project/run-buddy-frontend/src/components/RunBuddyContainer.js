@@ -1,24 +1,30 @@
 import React from 'react'
-import {Navbar, NavItem} from 'react-materialize'
+import { Route, Switch } from 'react-router-dom';
+import WorkoutsContainer from './WorkoutsContainer'
+import WorkoutForm from './WorkoutForm'
+import NavBar from './NavBar'
 
 class RunBuddyContainer extends React.Component {
-  state ={
+  state = {
     workouts: []
   }
 
   componentDidMount = () => {
     fetch('http://localhost:3001/api/v1/workouts')
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => this.setState({workouts: data}))
   }
 
   render() {
     return (
       <div>
-        <Navbar brand='RunBuddy' right>
-	         <NavItem href='get-started.html'>Login</NavItem>
-	         <NavItem href='components.html'>Logout</NavItem>
-        </Navbar>
+        <NavBar />
+        <div>
+          <Switch>
+            <Route exact path="/runbuddy/add-workout" component={WorkoutForm} />
+            <Route path="/runbuddy/workouts" component={WorkoutsContainer} />
+          </Switch>
+        </div>
       </div>
     )
   }
