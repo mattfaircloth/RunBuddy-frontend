@@ -9,11 +9,11 @@ class RunBuddyContainer extends React.Component {
     workouts: []
   }
 
-  componentDidMount = () => {
-    fetch('http://localhost:3001/api/v1/workouts')
-    .then(res => res.json())
-    .then(data => this.setState({workouts: data}))
-  }
+  // componentDidMount = () => {
+  //   fetch('http://localhost:3001/api/v1/workouts')
+  //   .then(res => res.json())
+  //   .then(data => this.setState({workouts: data}))
+  // }
 
   render() {
     return (

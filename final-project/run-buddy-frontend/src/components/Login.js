@@ -7,6 +7,7 @@ import NavBar from './NavBar'
 class Login extends React.Component {
 
   responseFacebook = (response) => {
+    console.log(response);
     const history = this.props.history
     this.props.loginUser(response, history);
     history.push("/home");

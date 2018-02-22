@@ -25,7 +25,7 @@ class Home extends React.Component {
         <NavBar />
         <div className="ui grid container">
           <div className="ui two column stackable grid">
-            {loggedIn ? (<div className="first header"><h1 className="welcome">Welcome to RunBuddy, {this.props.currentUser.name.split(" ")[0]}</h1></div>) : null}
+            {loggedIn ? (<div className="first header"><h1 className="welcome">Welcome to RunBuddy, {this.props.currentUser.name.split(" ")[0]}!</h1></div>) : null}
             <div className="column">
               <div className="welcome-button">
                 <Link to={path}>
