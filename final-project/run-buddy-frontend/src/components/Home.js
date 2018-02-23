@@ -23,25 +23,25 @@ class Home extends React.Component {
     return (
       <div>
         <NavBar />
-        <div className="ui grid container">
-          <div className="ui two column stackable grid">
-            {loggedIn ? (<div className="first header"><h1 className="welcome">Welcome to RunBuddy, {this.props.currentUser.name.split(" ")[0]}!</h1></div>) : null}
-            <div className="column">
-              <div className="welcome-button">
+        <div>
+          <div>
+            {loggedIn ? (<div><h1>Welcome to RunBuddy, {this.props.currentUser.name.split(" ")[0]}!</h1></div>) : null}
+            <div>
+              <div>
                 <Link to={path}>
-                  <div className="welcome content">
-                    <div className="header"><h2 className="welcome headers">Find a RunBuddy</h2></div>
-                    <div className="description">Are you looking for someone to run with?</div>
+                  <div>
+                    <div><h2>Find a RunBuddy</h2></div>
+                    <div>Are you looking for someone to run with?</div>
                   </div>
                 </Link>
               </div>
             </div>
-            <div className="column">
-              <div className="welcome-button">
+            <div>
+              <div>
                 <Link to={'/runbuddy/workouts'}>
-                  <div className="welcome content">
-                    <div className="header"><h2 className="welcome headers">Find a Workout</h2></div>
-                    <div className="description">Find a Workout near you!</div>
+                  <div>
+                    <div><h2>Find a Workout</h2></div>
+                    <div>Find a Workout near you!</div>
                   </div>
                 </Link>
               </div>

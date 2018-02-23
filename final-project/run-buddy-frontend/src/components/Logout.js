@@ -13,8 +13,8 @@ class Logout extends React.Component {
 
   render() {
     return (
-      <div className="right aligned item">
-        <div className="ui floated button" onClick={this.handleLogout}>Log Out</div>
+      <div>
+        <div onClick={this.handleLogout}>Log Out</div>
       </div>
     )
   }

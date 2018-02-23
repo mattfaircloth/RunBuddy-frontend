@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "google-map-react": "^0.31.0",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-facebook-login-component": "^0.9.1",

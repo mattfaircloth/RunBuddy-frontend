@@ -1,3 +1,5 @@
+
+
 const headers = {
   'Content-Type': 'application/json',
   'Accepts': 'application/json'
@@ -47,9 +49,9 @@ export function getLocation() {
   }
 }
 
-export function getVacancyGeoLocation(address) {
+export function getWorkoutGeoLocation(address) {
   return (dispatch) => {
-    return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyDj4EgDdvqF-dM2DvOD49jKe9uMyuIUo0M`)
+    return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyDfdcHEre9XiJdspQ2au6OmG-UBRkkV7co`)
     .then(resp => resp.json())
   }
 }

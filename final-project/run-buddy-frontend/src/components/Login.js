@@ -3,6 +3,7 @@ import { FacebookLogin } from 'react-facebook-login-component';
 import * as actions from '../actions/index';
 import { connect }  from 'react-redux';
 import NavBar from './NavBar'
+import config from '../config'
 
 class Login extends React.Component {
 
@@ -17,10 +18,10 @@ class Login extends React.Component {
     return (
       <div>
         <NavBar />
-        <div className="title">
+        <div>
           Find Friends to Run With!
         </div>
-        <FacebookLogin socialId="165614607425572"
+        <FacebookLogin socialId={config.FACEBOOK_KEY}
                                className="facebook-login-button"
                                language="en_US"
                                scope="public_profile,email,user_friends"
