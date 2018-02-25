@@ -3,6 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import CurrentLocation from './CurrentLocation'
+import Marker from './Marker'
 import config from '../config'
 
 class Map extends React.Component {
@@ -14,7 +15,6 @@ class Map extends React.Component {
 
 
   render() {
-    console.log(this.props);
     return (
       <div className="google-map">
       test
@@ -23,6 +23,14 @@ class Map extends React.Component {
           center={this.props.center}
           zoom={this.props.zoom} >
           <CurrentLocation lat={this.props.currentPosition.latitude} lng={this.props.currentPosition.longitude} />
+
+          {this.props.currentUser.available_workouts.map((marker, i) => {
+              return <Marker  className="existingMarker" key={i}
+                                  lat={marker[0].latitude}
+                                  lng={marker[0].longitude}
+                                  handleMarkerClick={this.props.handleMarkerClick}
+                                  marker={marker} />
+            })}
         </GoogleMapReact>
        </div>
     )

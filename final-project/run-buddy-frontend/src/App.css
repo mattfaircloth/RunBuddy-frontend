@@ -39,6 +39,11 @@
   height: 30px
 }
 
+.runner-icon {
+  width: 30px;
+  height: 30px
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

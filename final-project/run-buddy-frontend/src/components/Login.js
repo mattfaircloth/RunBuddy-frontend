@@ -19,8 +19,17 @@ class Login extends React.Component {
       <div>
         <NavBar />
         <div>
-          Find Friends to Run With!
+          
         </div>
+        <div>
+          <div>
+            <h3>Sign In!</h3>
+            <form>
+              <input placeholder="Username"></input>
+              <input placeholder="Password"></input>
+            </form>
+          </div>
+          <h4>OR</h4>
         <FacebookLogin socialId={config.FACEBOOK_KEY}
                                className="facebook-login-button"
                                language="en_US"
@@ -30,7 +39,7 @@ class Login extends React.Component {
                                fields="id,email,name,picture.height(480),friends"
                                version="v2.12"
                                buttonText="Login With Facebook" />
-
+        </div>
       </div>
     );
   }

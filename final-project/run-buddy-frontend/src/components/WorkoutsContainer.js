@@ -14,6 +14,7 @@ class WorkoutsContainer extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props.currentUser.available_workouts);
     if (this.props.currentPosition.latitude) {
 
       this.setState({ center: this.props.currentPosition })
@@ -22,11 +23,19 @@ class WorkoutsContainer extends React.Component {
     }
   }
 
-
+  handleMarkerClick = e => {
+    const workout = this.props.currentUser.available_workouts.find(workout => workout[0].address === e.currentTarget.attributes.name.textContent)
+    const workoutSlug = workout[0].address.split(" ").join("-")
+    this.props.history.push(`/runbuddy/workouts/${workoutSlug}`);
+    this.setState({
+      center: {latitude: parseFloat(workout.latitude), longitude: parseFloat(workout.longitude)},
+      zoom: 13
+    })
+  }
 
   render() {
 
-    console.log(this.props);
+
 
     let workouts = this.props.currentUser.workouts.map(workout => <WorkoutItem key={workout.id} workout={workout}/>)
     return(
@@ -36,7 +45,7 @@ class WorkoutsContainer extends React.Component {
           {workouts}
         </div>
         Hi
-        <Map />
+        <Map  handleMarkerClick={this.handleMarkerClick}/>
       </div>
     )
   }
