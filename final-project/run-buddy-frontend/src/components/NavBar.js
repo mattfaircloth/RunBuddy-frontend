@@ -5,7 +5,10 @@ import Logout from './Logout'
 const NavBar = (props) => {
   return (
     <div>
-      <Navbar brand='RunBuddy' right>
+      <Navbar brand='RunBuddy' href='/runbuddy/workouts' right>
+        <NavItem href='/runbuddy/add-workout'>New Workout</NavItem>
+        <NavItem href='/runbuddy/workouts'>Join a Workout</NavItem>
+        <NavItem href='/runbuddy/myworkouts'>My Workouts</NavItem>
          <NavItem href='/login'>Login</NavItem>
          <NavItem>
            <Logout />

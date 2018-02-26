@@ -4,12 +4,12 @@ const WorkoutItem = (props) => {
 
   return (
     <div>
-      <h4>Start Time: {props.workout.start_time}</h4>
-      <h4>Date: {props.workout.date}</h4>
-      <h4>Address: {props.workout.address}</h4>
-      <h4>Distance: {props.workout.distance}</h4>
-      <h4>Pace: {props.workout.pace}</h4>
-      <h4>__________________________________</h4>
+      <p>Start Time: {props.workout.start_time}</p>
+      <p>Date: {props.workout.date}</p>
+      <p>Address: {props.workout.address}</p>
+      <p>Distance: {props.workout.distance}</p>
+      <p>Pace: {props.workout.pace}</p>
+      <p>__________________________________</p>
     </div>
   )
 }

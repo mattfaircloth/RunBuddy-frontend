@@ -6,6 +6,7 @@ import Home from './components/Home'
 import RunBuddyContainer from './components/RunBuddyContainer'
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">

@@ -1,6 +1,7 @@
 import React from 'react'
 import Map from './Map'
 import WorkoutItem from './WorkoutItem'
+import FriendWorkout from './FriendWorkout'
 import { connect } from 'react-redux'
 import * as actions from '../actions/index'
 import { Switch, Route } from 'react-router-dom'
@@ -35,16 +36,14 @@ class WorkoutsContainer extends React.Component {
 
   render() {
 
-
-
-    let workouts = this.props.currentUser.workouts.map(workout => <WorkoutItem key={workout.id} workout={workout}/>)
     return(
       <div>
-        <div>
-          <h3>Workouts:</h3>
-          {workouts}
-        </div>
-        Hi
+        <Switch>
+          <Route path="/runbuddy/workouts/:slug" render={(args) =>  {
+                const workout = this.props.currentUser.available_workouts.find(workout => workout[0].address.split(" ").join("-") === args.match.params.slug)
+                return <FriendWorkout workout={workout} currentUser={this.props.currentUser}/>
+                }} />
+        </Switch>
         <Map  handleMarkerClick={this.handleMarkerClick}/>
       </div>
     )

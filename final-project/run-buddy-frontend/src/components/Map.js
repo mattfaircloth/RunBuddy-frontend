@@ -9,15 +9,16 @@ import config from '../config'
 class Map extends React.Component {
   static defaultProps = {
     center: {lat: 40.731134, lng: -73.984099},
-    zoom: 11
+    zoom: 12
   };
 
 
 
   render() {
     return (
+      <div>
+        <h3>Workouts to Join:</h3>
       <div className="google-map">
-      test
       <GoogleMapReact
           bootstrapURLKeys={{ key: `${config.GOOGLE_MAPS}`}}
           center={this.props.center}
@@ -32,6 +33,7 @@ class Map extends React.Component {
                                   marker={marker} />
             })}
         </GoogleMapReact>
+       </div>
        </div>
     )
   }

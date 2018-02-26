@@ -19,7 +19,7 @@ class Login extends React.Component {
       <div>
         <NavBar />
         <div>
-          
+
         </div>
         <div>
           <div>
