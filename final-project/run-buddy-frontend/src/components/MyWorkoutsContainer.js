@@ -14,7 +14,6 @@ class MyWorkoutsContainer extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.currentUser.available_workouts);
     if (this.props.currentPosition.latitude) {
 
       this.setState({ center: this.props.currentPosition })
@@ -24,7 +23,6 @@ class MyWorkoutsContainer extends React.Component {
   }
 
   render() {
-
     let workouts = this.props.currentUser.workouts.map(workout => <WorkoutItem key={workout.id} workout={workout}/>)
     return(
       <div>

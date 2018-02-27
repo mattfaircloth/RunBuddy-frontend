@@ -1,7 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import * as actions from '../actions/index';
+import { connect } from 'react-redux';
 
 class FriendWorkout extends React.Component {
+
+  joinWorkout = (e) => {
+    console.log(this.props);
+     // const currentUserWorkouts = this.props.currentUser.workouts
+      const workout = this.props.workout[0]
+      console.log(workout);
+     // return currentUserWorkouts.push(workout)
+
+      //this.props.postWorkout(workout);
+      // this.props.history.push("/runbuddy/workouts")
+
+   }
 
   render() {
     const workout = this.props.workout
@@ -36,15 +50,26 @@ class FriendWorkout extends React.Component {
       </div>
 
       <div className="back-button">
+        <div>
+        <Link to="/runbuddy/myworkouts">
+          <button onClick={this.joinWorkout}>Join Workout</button>
+        </Link>
+        </div>
+        <div>
         <Link to="/runbuddy/workouts">
           <button>Back</button>
         </Link>
+        </div>
       </div>
     </div>
     )
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    currentUser: state.currentUser
+  }
+}
 
-
-export default FriendWorkout;
+export default connect(mapStateToProps, actions)(FriendWorkout);

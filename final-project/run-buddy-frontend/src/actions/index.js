@@ -64,8 +64,8 @@ export function postWorkout(data) {
       body: JSON.stringify({data})
     }).then(resp => resp.json())
     .then(json => {
-      const {start_time, activity, address, distance, pace, id} = json
-      const workout = {start_time, activity, address, distance, pace, id}
+      const {start_time, date, activity, address, distance, pace, id} = json
+      const workout = {start_time, date, activity, address, distance, pace, id}
       dispatch({ type: 'UPDATE_USER_WORKOUTS', workout })
     })
   }

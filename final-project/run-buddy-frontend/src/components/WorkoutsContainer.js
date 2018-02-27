@@ -15,7 +15,6 @@ class WorkoutsContainer extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.currentUser.available_workouts);
     if (this.props.currentPosition.latitude) {
 
       this.setState({ center: this.props.currentPosition })
@@ -33,6 +32,7 @@ class WorkoutsContainer extends React.Component {
       zoom: 13
     })
   }
+
 
   render() {
 
