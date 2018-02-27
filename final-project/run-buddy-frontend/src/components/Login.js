@@ -6,12 +6,32 @@ import NavBar from './NavBar'
 import config from '../config'
 
 class Login extends React.Component {
+  state = {
+    username: '',
+    password: ''
+  }
 
   responseFacebook = (response) => {
     console.log(response);
     const history = this.props.history
     this.props.loginUser(response, history);
     history.push("/home");
+  }
+
+  handleLoginChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleLogin = (event) => {
+    event.preventDefault();
+    const history = this.props.history
+    this.props.loginManualUser(this.state.username, this.state.password, history)
+  }
+
+  handleForm = (event) => {
+    event.preventDefault()
   }
 
   render () {
@@ -24,9 +44,10 @@ class Login extends React.Component {
         <div>
           <div>
             <h3>Sign In!</h3>
-            <form>
-              <input placeholder="Username"></input>
-              <input placeholder="Password"></input>
+            <form onSubmit={this.handleForm}>
+              <input type='text' name='username' placeholder='Username' onChange={this.handleLoginChange}></input>
+              <input type='password' name='password' placeholder='Password' onChange={this.handleLoginChange}></input>
+              <input type='submit' value='Sign In' onClick={this.handleLogin}></input>
             </form>
           </div>
           <h4>OR</h4>

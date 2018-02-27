@@ -10,6 +10,7 @@ const NavBar = (props) => {
         <NavItem href='/runbuddy/workouts'>Join a Workout</NavItem>
         <NavItem href='/runbuddy/myworkouts'>My Workouts</NavItem>
          <NavItem href='/login'>Login</NavItem>
+         <NavItem href='/signup'>Signup</NavItem>
          <NavItem>
            <Logout />
          </NavItem>

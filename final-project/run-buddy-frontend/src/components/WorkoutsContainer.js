@@ -9,11 +9,6 @@ import { withRouter } from 'react-router'
 
 class WorkoutsContainer extends React.Component {
 
-  state = {
-    center: {latitude: 40.731134, longitude: -73.984099},
-    zoom: 11
-  }
-
   componentDidMount() {
     if (this.props.currentPosition.latitude) {
 
@@ -27,10 +22,6 @@ class WorkoutsContainer extends React.Component {
     const workout = this.props.currentUser.available_workouts.find(workout => workout[0].address === e.currentTarget.attributes.name.textContent)
     const workoutSlug = workout[0].address.split(" ").join("-")
     this.props.history.push(`/runbuddy/workouts/${workoutSlug}`);
-    this.setState({
-      center: {latitude: parseFloat(workout.latitude), longitude: parseFloat(workout.longitude)},
-      zoom: 13
-    })
   }
 
 

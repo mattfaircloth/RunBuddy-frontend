@@ -32,6 +32,34 @@ export function loginUser(response, history) {
   }
 }
 
+export function signUp(username, password, name, email, phone, history) {
+  return (dispatch) => {
+    return fetch('http://localhost:3001/api/v1/signup', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({username, password, name, email, phone})
+    }).then(resp => resp.json())
+    .then(user => {
+      localStorage.setItem("token", user.token)
+      history.push("/home")
+    })
+  }
+}
+
+export function loginManualUser(username, password, history) {
+  return (dispatch) => {
+    return fetch('http://localhost:3001/api/v1/login', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({username, password})
+    }).then(resp => resp.json())
+    .then(user => {
+      localStorage.setItem("token", user.token)
+      history.push("/home")
+    })
+  }
+}
+
 export function logoutUser() {
   return (dispatch) => {
     localStorage.clear();
@@ -67,6 +95,21 @@ export function postWorkout(data) {
       const {start_time, date, activity, address, distance, pace, id} = json
       const workout = {start_time, date, activity, address, distance, pace, id}
       dispatch({ type: 'UPDATE_USER_WORKOUTS', workout })
+    })
+  }
+}
+
+export function postUserWorkout(data) {
+  return (dispatch) => {
+    return fetch('http://localhost:3001/api/v1/userworkouts', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({data})
+    }).then(resp => resp.json())
+    .then(json => {
+      const {workout_id, user_id} = json
+      const user_workout = {workout_id, user_id}
+      dispatch({ type: 'UPDATE_USER_USERWORKOUTS', user_workout })
     })
   }
 }

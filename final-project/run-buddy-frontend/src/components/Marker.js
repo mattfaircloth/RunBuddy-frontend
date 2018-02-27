@@ -7,7 +7,7 @@ class Marker extends React.Component {
     return (
       <div>
 
-        <img className="runner-icon" src="/runner.jpg" alt="runner" name={this.props.marker[0].address} onClick={this.props.handleMarkerClick}/>
+        <img className="runner-icon" src="/runner.jpg" alt="runner" name={this.props.marker.address} onClick={this.props.handleMarkerClick}/>
       </div>
     );
   }

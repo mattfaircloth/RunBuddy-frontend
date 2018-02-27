@@ -6,20 +6,26 @@ import { connect } from 'react-redux';
 class FriendWorkout extends React.Component {
 
   joinWorkout = (e) => {
-    console.log(this.props);
      // const currentUserWorkouts = this.props.currentUser.workouts
-      const workout = this.props.workout[0]
+      const workout = this.props.workout[0].id
+      const currentUserId = this.props.currentUser.id
+      const data = {workout_id: workout, user_id: currentUserId}
       console.log(workout);
-     // return currentUserWorkouts.push(workout)
+      console.log(currentUserId)
+      console.log('_____')
+      console.log(data)
 
-      //this.props.postWorkout(workout);
-      // this.props.history.push("/runbuddy/workouts")
-
+      this.props.postUserWorkout(data);
    }
+
+   // <div className="header">{user.name}</div>
+   // <div className="meta">{user.email}</div>
+   // <div className="meta">{user.phone}</div>
 
   render() {
     const workout = this.props.workout
-    const user = this.props.currentUser.associations_with_workouts.find(user => user.id === workout[0].user_id);
+    //const user = this.props.currentUser.associations_with_workouts.find(user => user.id === workout[0].user_id);
+
 
     return (
     <div className="parent">
@@ -32,9 +38,7 @@ class FriendWorkout extends React.Component {
         </div>
         <div className="content">
           <h5>Runner: </h5>
-          <div className="header">{user.name}</div>
-          <div className="meta">{user.email}</div>
-          <div className="meta">{user.phone}</div>
+
           <h5 className="ui header">
             Meetup Point:
           </h5>

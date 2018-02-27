@@ -25,12 +25,15 @@ class Map extends React.Component {
           zoom={this.props.zoom} >
           <CurrentLocation lat={this.props.currentPosition.latitude} lng={this.props.currentPosition.longitude} />
 
-          {this.props.currentUser.available_workouts.map((marker, i) => {
-              return <Marker  className="existingMarker" key={i}
-                                  lat={marker[0].latitude}
-                                  lng={marker[0].longitude}
+          {this.props.currentUser.available_workouts.map(markers => {
+            return markers.map(marker => {
+              return <Marker  className="existingMarker" key={marker.id}
+                                  lat={marker.latitude}
+                                  lng={marker.longitude}
                                   handleMarkerClick={this.props.handleMarkerClick}
                                   marker={marker} />
+            })
+
             })}
         </GoogleMapReact>
        </div>

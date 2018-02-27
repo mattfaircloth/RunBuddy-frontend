@@ -8,20 +8,6 @@ import { withRouter } from 'react-router'
 
 class MyWorkoutsContainer extends React.Component {
 
-  state = {
-    center: {latitude: 40.731134, longitude: -73.984099},
-    zoom: 11
-  }
-
-  componentDidMount() {
-    if (this.props.currentPosition.latitude) {
-
-      this.setState({ center: this.props.currentPosition })
-    } else {
-      this.props.getLocation();
-    }
-  }
-
   render() {
     let workouts = this.props.currentUser.workouts.map(workout => <WorkoutItem key={workout.id} workout={workout}/>)
     return(
