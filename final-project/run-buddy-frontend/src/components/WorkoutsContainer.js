@@ -19,7 +19,9 @@ class WorkoutsContainer extends React.Component {
   }
 
   handleMarkerClick = e => {
-    const workout = this.props.currentUser.available_workouts.find(workout => workout[0].address === e.currentTarget.attributes.name.textContent)
+     const workoutAddresses = this.props.currentUser.available_workouts.map(workouts => workouts.find(workout => workout.address === e.currentTarget.attributes.name.textContent))
+     const workout = workoutAddresses.filter(add => add !== undefined)
+
     const workoutSlug = workout[0].address.split(" ").join("-")
     this.props.history.push(`/runbuddy/workouts/${workoutSlug}`);
   }
@@ -31,7 +33,9 @@ class WorkoutsContainer extends React.Component {
       <div>
         <Switch>
           <Route path="/runbuddy/workouts/:slug" render={(args) =>  {
-                const workout = this.props.currentUser.available_workouts.find(workout => workout[0].address.split(" ").join("-") === args.match.params.slug)
+            const workoutAddresses = this.props.currentUser.available_workouts.map(workouts => workouts.find(workout => workout.address.split(" ").join("-") === args.match.params.slug))
+            const workout = workoutAddresses.filter(add => add !== undefined)
+                //const workout = this.props.currentUser.available_workouts.find(workout => workout[0].address.split(" ").join("-") === args.match.params.slug)
                 return <FriendWorkout workout={workout} currentUser={this.props.currentUser}/>
                 }} />
         </Switch>
