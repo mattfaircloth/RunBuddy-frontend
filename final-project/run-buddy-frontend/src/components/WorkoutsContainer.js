@@ -28,15 +28,13 @@ class WorkoutsContainer extends React.Component {
 
 
   render() {
-
     return(
       <div>
         <Switch>
           <Route path="/runbuddy/workouts/:slug" render={(args) =>  {
             const workoutAddresses = this.props.currentUser.available_workouts.map(workouts => workouts.find(workout => workout.address.split(" ").join("-") === args.match.params.slug))
             const workout = workoutAddresses.filter(add => add !== undefined)
-                //const workout = this.props.currentUser.available_workouts.find(workout => workout[0].address.split(" ").join("-") === args.match.params.slug)
-                return <FriendWorkout workout={workout} currentUser={this.props.currentUser}/>
+                return <FriendWorkout workout={workout} currentUser={this.props.currentUser} />
                 }} />
         </Switch>
         <Map  handleMarkerClick={this.handleMarkerClick}/>

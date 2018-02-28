@@ -3,19 +3,26 @@ import WorkoutItem from './WorkoutItem'
 import FriendWorkout from './FriendWorkout'
 import { connect } from 'react-redux'
 import * as actions from '../actions/index'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
 class MyWorkoutsContainer extends React.Component {
 
   render() {
-    let workouts = this.props.currentUser.workouts.map(workout => <WorkoutItem key={workout.id} workout={workout}/>)
+    let workouts = this.props.currentUser.workouts.map(workout => <WorkoutItem key={workout.id} currentUser={this.props.currentUser} workout={workout}/>)
     return(
       <div>
         <div>
           <h3>Your Workouts:</h3>
           {workouts}
         </div>
+
+        <div>
+          <Link to="/runbuddy/workouts">
+            <button>Back</button>
+          </Link>
+        </div>
+
     </div>
     )
   }

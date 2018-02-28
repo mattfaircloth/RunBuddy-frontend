@@ -7,6 +7,7 @@ import NavBar from './NavBar'
 import { connect } from 'react-redux'
 import * as actions from '../actions/index'
 import withAuth from '../hocs/withAuth'
+import { withRouter } from 'react-router'
 
 class RunBuddyContainer extends React.Component {
 
@@ -35,4 +36,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, actions)(withAuth(RunBuddyContainer));
+export default withRouter(connect(mapStateToProps, actions)(withAuth(RunBuddyContainer)));

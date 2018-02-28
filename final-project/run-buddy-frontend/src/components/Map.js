@@ -12,9 +12,15 @@ class Map extends React.Component {
     zoom: 12
   };
 
-
-
   render() {
+    let userWorkouts = this.props.currentUser.workouts.map(workout => workout.id)
+    let avWorkouts = this.props.currentUser.available_workouts.map(workouts => {
+      return workouts.filter(workout => !userWorkouts.includes(workout.id))
+    })
+
+
+    console.log('My Workouts', userWorkouts)
+    console.log('Workouts on Map:', avWorkouts)
     return (
       <div>
         <h3>Workouts to Join:</h3>
@@ -25,7 +31,7 @@ class Map extends React.Component {
           zoom={this.props.zoom} >
           <CurrentLocation lat={this.props.currentPosition.latitude} lng={this.props.currentPosition.longitude} />
 
-          {this.props.currentUser.available_workouts.map(markers => {
+          {avWorkouts.map(markers => {
             return markers.map(marker => {
               return <Marker  className="existingMarker" key={marker.id}
                                   lat={marker.latitude}

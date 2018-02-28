@@ -2,20 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as actions from '../actions/index';
 import { connect } from 'react-redux';
+import { Switch, Route } from 'react-router-dom'
+import { withRouter } from 'react-router'
 
 class FriendWorkout extends React.Component {
 
   joinWorkout = (e) => {
-     // const currentUserWorkouts = this.props.currentUser.workouts
-      const workout = this.props.workout[0].id
+      const workoutId = this.props.workout[0].id
       const currentUserId = this.props.currentUser.id
-      const data = {workout_id: workout, user_id: currentUserId}
-      console.log(workout);
+      const data = {workout_id: workoutId, user_id: currentUserId}
+      console.log(workoutId);
       console.log(currentUserId)
       console.log('_____')
       console.log(data)
 
-      this.props.postUserWorkout(data);
+      this.props.postUserWorkout(data)
+      this.props.history.push(`/runbuddy/myworkouts`)
+
    }
 
    // <div className="header">{user.name}</div>
@@ -23,9 +26,10 @@ class FriendWorkout extends React.Component {
    // <div className="meta">{user.phone}</div>
 
   render() {
+    console.log(this.props);
     const workout = this.props.workout
-    //const user = this.props.currentUser.associations_with_workouts.find(user => user.id === workout[0].user_id);
-
+    // const user = this.props.currentUser.associations_with_workouts.find(user => user.id === workout[0].user_id);
+    // debugger
 
     return (
     <div className="parent">
@@ -55,9 +59,7 @@ class FriendWorkout extends React.Component {
 
       <div className="back-button">
         <div>
-        <Link to="/runbuddy/myworkouts">
           <button onClick={this.joinWorkout}>Join Workout</button>
-        </Link>
         </div>
         <div>
         <Link to="/runbuddy/workouts">
@@ -76,4 +78,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, actions)(FriendWorkout);
+export default withRouter(connect(mapStateToProps, actions)(FriendWorkout));

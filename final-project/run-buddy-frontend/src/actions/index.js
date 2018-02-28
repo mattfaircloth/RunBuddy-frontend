@@ -109,7 +109,19 @@ export function postUserWorkout(data) {
     .then(json => {
       const {workout_id, user_id} = json
       const user_workout = {workout_id, user_id}
+      //const workout = user_workout.workout_id
       dispatch({ type: 'UPDATE_USER_USERWORKOUTS', user_workout })
+      dispatch({type: 'UPDATE_SPECIFIC_WORKOUT', workout_id})
+    })
+  }
+}
+
+
+export function deleteUserWorkout(id) {
+  return (dispatch) => {
+    return fetch(`http://localhost:3001/api/v1/userworkouts/${id}`, {
+      method: 'DELETE',
+      headers
     })
   }
 }
