@@ -18,9 +18,6 @@ class Map extends React.Component {
       return workouts.filter(workout => !userWorkouts.includes(workout.id))
     })
 
-
-    console.log('My Workouts', userWorkouts)
-    console.log('Workouts on Map:', avWorkouts)
     return (
       <div>
         <h3>Workouts to Join:</h3>

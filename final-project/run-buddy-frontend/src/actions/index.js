@@ -107,21 +107,24 @@ export function postUserWorkout(data) {
       body: JSON.stringify({data})
     }).then(resp => resp.json())
     .then(json => {
-      const {workout_id, user_id} = json
-      const user_workout = {workout_id, user_id}
+      // const {workout_id, user_id} = json
+      // const user_workout = {workout_id, user_id}
       //const workout = user_workout.workout_id
-      dispatch({ type: 'UPDATE_USER_USERWORKOUTS', user_workout })
-      dispatch({type: 'UPDATE_SPECIFIC_WORKOUT', workout_id})
+      dispatch({ type: 'UPDATE_USER_USERWORKOUTS', user_workout: json })
+      dispatch({type: 'UPDATE_SPECIFIC_WORKOUT', workout_id:  json.workout_id})
     })
   }
 }
 
 
-export function deleteUserWorkout(id) {
+export function deleteUserWorkout(id, workoutId) {
   return (dispatch) => {
+
+    console.log(id);
     return fetch(`http://localhost:3001/api/v1/userworkouts/${id}`, {
       method: 'DELETE',
       headers
-    })
+    }).then(dispatch({ type: 'DELETE_USER_WORKOUTS', id: workoutId}))
+
   }
 }

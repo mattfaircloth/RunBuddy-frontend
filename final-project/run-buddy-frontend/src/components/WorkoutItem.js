@@ -11,8 +11,9 @@ class WorkoutItem extends React.Component {
     const currentUser = this.props.currentUser
     const userWorkout = currentUser.user_workouts.find(uw => workout.id === uw.workout_id)
     const userWorkoutId = userWorkout.id
+    console.log('user workout id', userWorkoutId)
 
-    this.props.deleteUserWorkout(userWorkoutId)
+    this.props.deleteUserWorkout(userWorkoutId, workout.id)
     this.props.history.push(`/runbuddy/workouts`)
    }
 
