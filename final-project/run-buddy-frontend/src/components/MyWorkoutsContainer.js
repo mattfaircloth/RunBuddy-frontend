@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import * as actions from '../actions/index'
 import { Switch, Route, Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
+import {Button} from 'react-materialize'
 
 class MyWorkoutsContainer extends React.Component {
 
@@ -19,7 +20,7 @@ class MyWorkoutsContainer extends React.Component {
 
         <div>
           <Link to="/runbuddy/workouts">
-            <button>Back</button>
+            <Button waves='light'>Back</Button>
           </Link>
         </div>
 

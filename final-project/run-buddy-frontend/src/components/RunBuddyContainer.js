@@ -16,7 +16,7 @@ class RunBuddyContainer extends React.Component {
     return (
       <div>
         <NavBar />
-        <div>
+        <div className='runbuddy-main-container'>
           <Switch>
             <Route exact path="/runbuddy/add-workout" component={WorkoutForm} />
             <Route path="/runbuddy/workouts" component={WorkoutsContainer} />

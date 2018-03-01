@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
+import {Button, Icon} from 'react-materialize'
 
 
 class WorkoutForm extends React.Component {
@@ -84,7 +85,7 @@ class WorkoutForm extends React.Component {
                       <input onChange={this.handleChange} type="text" name="pace" placeholder="Pace"/>
                     </div>
 
-                    <div className="ui button" onClick={this.handleSubmit} tabIndex="0">Create Workout</div>
+                    <Button waves='light' onClick={this.handleSubmit}>Create Workout<Icon left>add</Icon></Button>
                   </div>
                 </div>
           </div>

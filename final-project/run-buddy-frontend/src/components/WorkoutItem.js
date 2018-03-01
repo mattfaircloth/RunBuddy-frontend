@@ -3,6 +3,7 @@ import * as actions from '../actions/index';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom'
 import { withRouter } from 'react-router'
+import {Button, Icon} from 'react-materialize'
 
 class WorkoutItem extends React.Component {
 
@@ -29,7 +30,8 @@ class WorkoutItem extends React.Component {
 
          </div>
          <div>
-           <button onClick={this.leaveWorkout}>Leave Workout</button>
+           <Button waves='light' onClick={this.leaveWorkout}>Leave Workout<Icon left>close</Icon></Button>
+
            <p>__________________________________</p>
          </div>
        </div>
