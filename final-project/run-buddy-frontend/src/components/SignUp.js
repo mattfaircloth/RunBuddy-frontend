@@ -1,9 +1,7 @@
 import React from 'react';
-import { FacebookLogin } from 'react-facebook-login-component';
 import * as actions from '../actions/index';
 import { connect }  from 'react-redux';
 import NavBar from './NavBar'
-import config from '../config'
 
 class SignUp extends React.Component {
   state = {

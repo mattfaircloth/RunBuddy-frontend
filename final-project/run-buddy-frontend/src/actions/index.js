@@ -17,6 +17,13 @@ export function fetchUser() {
   }
 }
 
+export function getAllUsers() {
+  return (dispatch) => {
+    return fetch('http://localhost:3001/api/v1/users')
+    .then(resp => resp.json())
+  }
+}
+
 export function loginUser(response, history) {
   return (dispatch) => {
     return fetch('http://localhost:3001/api/v1/home', {

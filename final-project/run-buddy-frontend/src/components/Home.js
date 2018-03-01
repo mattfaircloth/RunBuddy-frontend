@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import NavBar from './NavBar';
 import withAuth from '../hocs/withAuth';
+import {Slider, Slide} from 'react-materialize'
 
 
 class Home extends React.Component {
@@ -17,8 +18,6 @@ class Home extends React.Component {
     console.log('STATE -> CURRENT LOCATION', this.props.currentPosition)
     console.log('------------------------');
     const loggedIn = !!this.props.currentUser.name
-    var path = ""
-    this.props.currentUser.workouts ? path = "/runbuddy/workouts" : path = "/runbuddy/add-workout"
 
     return (
       <div>
@@ -26,9 +25,11 @@ class Home extends React.Component {
         <div>
           <div>
             {loggedIn ? (<div><h1>Welcome to RunBuddy, {this.props.currentUser.name.split(" ")[0]}!</h1></div>) : null}
+            <Slider>
+              <Slide>
             <div>
               <div>
-                <Link to={path}>
+                <Link to={'/runbuddy/runners'}>
                   <div>
                     <div><h2>Find a RunBuddy</h2></div>
                     <div>Are you looking for someone to run with?</div>
@@ -36,6 +37,8 @@ class Home extends React.Component {
                 </Link>
               </div>
             </div>
+            </Slide>
+            <Slide>
             <div>
               <div>
                 <Link to={'/runbuddy/workouts'}>
@@ -46,6 +49,8 @@ class Home extends React.Component {
                 </Link>
               </div>
             </div>
+            </Slide>
+            </Slider>
           </div>
         </div>
       </div>

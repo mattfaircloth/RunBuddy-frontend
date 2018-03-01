@@ -8,12 +8,11 @@ class NavBar extends React.Component {
 
 
   render() {
-    console.log('Navbar', this.props);
     return (
       <div>
-        <Navbar brand='RunBuddy' href='/runbuddy/workouts' right>
-          <NavItem href='/runbuddy/add-workout'>New Workout</NavItem>
-          <NavItem href='/runbuddy/workouts'>Join a Workout</NavItem>
+        <Navbar brand='RunBuddy' href='/home' right>
+          <NavItem href='/runbuddy/add-workout'>Create a Workout</NavItem>
+          <NavItem href='/runbuddy/workouts'>Find a Workout</NavItem>
           <NavItem href='/runbuddy/myworkouts'>My Workouts</NavItem>
         <SideNav
           trigger={<Button>Profile</Button>}
@@ -27,12 +26,13 @@ class NavBar extends React.Component {
                 email: this.props.currentUser.email
               }}
             />
-
+          <SideNavItem href='/runbuddy/runners'>Find a Runner</SideNavItem>
           <SideNavItem href='/login'>Login</SideNavItem>
           <SideNavItem href='/signup'>Signup</SideNavItem>
           <SideNavItem>
             <Logout />
           </SideNavItem>
+
         </SideNav>
       </Navbar>
       </div>

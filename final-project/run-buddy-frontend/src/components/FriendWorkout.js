@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as actions from '../actions/index';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import {Button, Icon, Col, Card} from 'react-materialize'
 
@@ -27,7 +26,7 @@ class FriendWorkout extends React.Component {
    // <div className="meta">{user.phone}</div>
 
   render() {
-    console.log(this.props);
+    console.log('Workout Detail Props:', this.props.workout);
     const workout = this.props.workout
     // const user = this.props.currentUser.associations_with_workouts.find(user => user.id === workout[0].user_id);
     // debugger

@@ -1,7 +1,6 @@
 import React from 'react'
 import * as actions from '../actions/index';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import {Button, Icon} from 'react-materialize'
 

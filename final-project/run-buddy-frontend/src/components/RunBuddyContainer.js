@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import WorkoutsContainer from './WorkoutsContainer'
 import WorkoutForm from './WorkoutForm'
 import MyWorkoutsContainer from './MyWorkoutsContainer'
+import RunnersContainer from './RunnersContainer'
 import NavBar from './NavBar'
 import { connect } from 'react-redux'
 import * as actions from '../actions/index'
@@ -19,6 +20,7 @@ class RunBuddyContainer extends React.Component {
         <div className='runbuddy-main-container'>
           <Switch>
             <Route exact path="/runbuddy/add-workout" component={WorkoutForm} />
+            <Route path="/runbuddy/runners" component={RunnersContainer} />
             <Route path="/runbuddy/workouts" component={WorkoutsContainer} />
             <Route path="/runbuddy/myworkouts" component={MyWorkoutsContainer} />
           </Switch>

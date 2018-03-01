@@ -1,9 +1,8 @@
 import React from 'react'
 import WorkoutItem from './WorkoutItem'
-import FriendWorkout from './FriendWorkout'
 import { connect } from 'react-redux'
 import * as actions from '../actions/index'
-import { Switch, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import {Button} from 'react-materialize'
 
@@ -14,7 +13,7 @@ class MyWorkoutsContainer extends React.Component {
     return(
       <div>
         <div>
-          <h3>Your Workouts:</h3>
+          <h3>My Workouts:</h3>
           {workouts}
         </div>
 

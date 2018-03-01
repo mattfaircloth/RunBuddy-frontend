@@ -1,11 +1,12 @@
 import React from 'react'
 import Map from './Map'
-import WorkoutItem from './WorkoutItem'
 import FriendWorkout from './FriendWorkout'
 import { connect } from 'react-redux'
 import * as actions from '../actions/index'
 import { Switch, Route } from 'react-router-dom'
 import { withRouter } from 'react-router'
+import Friends from './Friends'
+import {Row, Col} from 'react-materialize'
 
 class WorkoutsContainer extends React.Component {
 
@@ -37,7 +38,14 @@ class WorkoutsContainer extends React.Component {
                 return <FriendWorkout workout={workout} currentUser={this.props.currentUser} />
                 }} />
         </Switch>
-        <Map  handleMarkerClick={this.handleMarkerClick}/>
+        <Row>
+          <Col  s={10} className='map-main'>
+            <Map  handleMarkerClick={this.handleMarkerClick}/>
+          </Col>
+          <Col  s={2} className='friends-main'>
+            <Friends />
+          </Col>
+        </Row>
       </div>
     )
   }
