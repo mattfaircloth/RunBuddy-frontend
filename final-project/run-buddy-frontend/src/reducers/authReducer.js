@@ -5,14 +5,11 @@ export function authReducer(state = {}, action) {
     case 'LOGOUT_USER':
       return {};
     case 'UPDATE_USER_WORKOUTS':
-    //filter to find workout_id and add it to the workout
-      return {...state, workouts: [action.workout]};
+      return {...state, workouts: [...state.workouts,action.workout]};
     case 'UPDATE_SPECIFIC_WORKOUT':
         //filter to find workout_id and add it to the workout
-        let arr = state.available_workouts
-        let flattened = [].concat.apply([],arr);
-        let specificWorkout = flattened.find(workout => workout.id === action.workout_id)
-      return {...state, workouts: [...state.workouts, specificWorkout]};
+
+      return {...state, workouts: [...state.workouts, action.workout]};
     case 'UPDATE_USER_USERWORKOUTS':
       return {...state, user_workouts: [...state.user_workouts, action.user_workout]};
     case 'DELETE_USER_WORKOUTS':

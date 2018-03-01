@@ -12,11 +12,17 @@ class Map extends React.Component {
     zoom: 12
   };
 
+  //DISPLAY ALL WORKOUTS THAT THAT DONT HAVE AN OWNER ID OF THE CURRENT USER ID
   render() {
-    let userWorkouts = this.props.currentUser.workouts.map(workout => workout.id)
-    let avWorkouts = this.props.currentUser.available_workouts.map(workouts => {
-      return workouts.filter(workout => !userWorkouts.includes(workout.id))
-    })
+    // let userWorkouts = this.props.currentUser.workouts.map(workout => workout.id)
+    // let avWorkouts = this.props.currentUser.available_workouts.map(workouts => {
+    //   return workouts.filter(workout => !userWorkouts.includes(workout.id))
+    // })
+    // console.log(this.props.currentUser)
+
+    let avWorkouts = this.props.allWorkouts.filter(workout => workout.owner_id !== this.props.currentUser.id)
+    console.log(avWorkouts)
+
 
     return (
       <div>
@@ -28,14 +34,13 @@ class Map extends React.Component {
           zoom={this.props.zoom} >
           <CurrentLocation lat={this.props.currentPosition.latitude} lng={this.props.currentPosition.longitude} />
 
-          {avWorkouts.map(markers => {
-            return markers.map(marker => {
+          {avWorkouts.map(marker => {
               return <Marker  className="existingMarker" key={marker.id}
                                   lat={marker.latitude}
                                   lng={marker.longitude}
                                   handleMarkerClick={this.props.handleMarkerClick}
                                   marker={marker} />
-            })
+
 
             })}
         </GoogleMapReact>

@@ -85,7 +85,7 @@ class WorkoutForm extends React.Component {
                       <input onChange={this.handleChange} type="text" name="pace" placeholder="Pace"/>
                     </div>
 
-                    <Button waves='light' onClick={this.handleSubmit}>Create Workout<Icon left>add</Icon></Button>
+                    <div className="ui button" onClick={this.handleSubmit} tabIndex="0">Create Workout</div>
                   </div>
                 </div>
           </div>

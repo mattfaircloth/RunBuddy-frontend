@@ -1,5 +1,6 @@
 import React from 'react'
-import WorkoutItem from './WorkoutItem'
+import MyWorkoutItem from './MyWorkoutItem'
+import JoinedWorkoutItem from './JoinedWorkoutItem'
 import { connect } from 'react-redux'
 import * as actions from '../actions/index'
 import { Link } from 'react-router-dom'
@@ -8,13 +9,29 @@ import {Button} from 'react-materialize'
 
 class MyWorkoutsContainer extends React.Component {
 
+  state = {
+    allWorkouts: []
+  }
+
+  componentDidMount = () => {
+    this.props.getAllWorkouts()
+    .then(res => this.setState({ allWorkouts: res }))
+  }
+
   render() {
-    let workouts = this.props.currentUser.workouts.map(workout => <WorkoutItem key={workout.id} currentUser={this.props.currentUser} workout={workout}/>)
+    let myCreatedWorkouts = this.state.allWorkouts.filter(workout => this.props.currentUser.id === workout.owner_id)
+    let myWorkouts = myCreatedWorkouts.map(workout => <MyWorkoutItem key={workout.id} currentUser={this.props.currentUser} workout={workout}/>)
+
+    let joinedWorkouts = this.props.currentUser.workouts.map(workout => <JoinedWorkoutItem key={workout.id} currentUser={this.props.currentUser} workout={workout}/>)
     return(
       <div>
         <div>
           <h3>My Workouts:</h3>
-          {workouts}
+          {myWorkouts}
+        </div>
+        <div>
+          <h3>Joined Workouts:</h3>
+          {joinedWorkouts}
         </div>
 
         <div>

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 import {Button, Icon} from 'react-materialize'
 
-class WorkoutItem extends React.Component {
+class JoinedWorkoutItem extends React.Component {
 
   leaveWorkout = (e) => {
     const workout = this.props.workout
@@ -44,4 +44,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, actions)(WorkoutItem));
+export default withRouter(connect(mapStateToProps, actions)(JoinedWorkoutItem));

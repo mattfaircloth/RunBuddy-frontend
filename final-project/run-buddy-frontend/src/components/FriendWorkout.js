@@ -8,7 +8,7 @@ import {Button, Icon, Col, Card} from 'react-materialize'
 class FriendWorkout extends React.Component {
 
   joinWorkout = (e) => {
-      const workoutId = this.props.workout[0].id
+      const workoutId = this.props.workout.id
       const currentUserId = this.props.currentUser.id
       const data = {workout_id: workoutId, user_id: currentUserId}
       console.log(workoutId);
@@ -16,20 +16,17 @@ class FriendWorkout extends React.Component {
       console.log('_____')
       console.log(data)
 
-      this.props.postUserWorkout(data)
+      this.props.postUserWorkout(data, this.props.workout)
       this.props.history.push(`/runbuddy/myworkouts`)
 
    }
 
-   // <div className="header">{user.name}</div>
-   // <div className="meta">{user.email}</div>
-   // <div className="meta">{user.phone}</div>
+
 
   render() {
-    console.log('Workout Detail Props:', this.props.workout);
     const workout = this.props.workout
-    // const user = this.props.currentUser.associations_with_workouts.find(user => user.id === workout[0].user_id);
-    // debugger
+    const ownerId = this.props.workout.owner_id
+    const user = this.props.currentUser.associations_with_workouts.find(user => user.id === ownerId)
 
     return (
     <div className="parent">
@@ -42,17 +39,19 @@ class FriendWorkout extends React.Component {
                   </div>
                   <div className="content">
                     <h5>Runner: </h5>
-                    ***Runner Name Here***
+                      <div className="header">{user.name}</div>
+                      <div className="meta">{user.email}</div>
+                      <div className="meta">{user.phone}</div>
                     <h5 className="ui header">
                       Meetup Point:
                     </h5>
-                      <div className="sub header">{workout[0].address}</div>
+                      <div className="sub header">{workout.address}</div>
                       <div className="sub header">
                         <h5>Workout Info</h5>
-                        <p>Date: {workout[0].date}</p>
-                        <p>Start Time: {workout[0].start_time}</p>
-                        <p>Distance: {workout[0].distance} miles</p>
-                        <p>Pace: {workout[0].pace} per minute</p>
+                        <p>Date: {workout.date}</p>
+                        <p>Start Time: {workout.start_time}</p>
+                        <p>Distance: {workout.distance} miles</p>
+                        <p>Pace: {workout.pace} per minute</p>
                       </div>
                     </div>
 		            </Card>
@@ -66,7 +65,6 @@ class FriendWorkout extends React.Component {
             </Link>
         </div>
         <div>
-
         </div>
       </div>
     </div>

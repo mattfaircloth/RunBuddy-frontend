@@ -31,7 +31,7 @@ class RunnersContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     currentPosition: state.currentPosition,
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
   }
 }
 

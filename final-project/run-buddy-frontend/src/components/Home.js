@@ -61,7 +61,7 @@ class Home extends React.Component {
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
-    currentPosition: state.currentPosition
+    currentPosition: state.currentPosition,
   }
 }
 

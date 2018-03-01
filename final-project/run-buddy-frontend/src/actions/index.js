@@ -24,6 +24,13 @@ export function getAllUsers() {
   }
 }
 
+export function getAllWorkouts() {
+  return (dispatch) => {
+    return fetch('http://localhost:3001/api/v1/workouts')
+    .then(resp => resp.json())
+  }
+}
+
 export function loginUser(response, history) {
   return (dispatch) => {
     return fetch('http://localhost:3001/api/v1/home', {
@@ -106,7 +113,7 @@ export function postWorkout(data) {
   }
 }
 
-export function postUserWorkout(data) {
+export function postUserWorkout(data, workout) {
   return (dispatch) => {
     return fetch('http://localhost:3001/api/v1/userworkouts', {
       method: 'POST',
@@ -118,7 +125,7 @@ export function postUserWorkout(data) {
       // const user_workout = {workout_id, user_id}
       //const workout = user_workout.workout_id
       dispatch({ type: 'UPDATE_USER_USERWORKOUTS', user_workout: json })
-      dispatch({type: 'UPDATE_SPECIFIC_WORKOUT', workout_id:  json.workout_id})
+      dispatch({type: 'UPDATE_SPECIFIC_WORKOUT', workout:  workout})
     })
   }
 }
