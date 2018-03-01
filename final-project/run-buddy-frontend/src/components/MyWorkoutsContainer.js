@@ -22,7 +22,14 @@ class MyWorkoutsContainer extends React.Component {
     let myCreatedWorkouts = this.state.allWorkouts.filter(workout => this.props.currentUser.id === workout.owner_id)
     let myWorkouts = myCreatedWorkouts.map(workout => <MyWorkoutItem key={workout.id} currentUser={this.props.currentUser} workout={workout}/>)
 
-    let joinedWorkouts = this.props.currentUser.workouts.map(workout => <JoinedWorkoutItem key={workout.id} currentUser={this.props.currentUser} workout={workout}/>)
+
+      let joinedWorkouts
+    if (this.props.currentUser.workouts) {
+      joinedWorkouts = this.props.currentUser.workouts.map(workout => <JoinedWorkoutItem key={workout.address} currentUser={this.props.currentUser} workout={workout}/>)
+    } else {
+      null
+    }
+
     return(
       <div>
         <div>

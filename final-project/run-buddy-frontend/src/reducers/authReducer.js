@@ -8,7 +8,6 @@ export function authReducer(state = {}, action) {
       return {...state, workouts: [...state.workouts,action.workout]};
     case 'UPDATE_SPECIFIC_WORKOUT':
         //filter to find workout_id and add it to the workout
-
       return {...state, workouts: [...state.workouts, action.workout]};
     case 'UPDATE_USER_USERWORKOUTS':
       return {...state, user_workouts: [...state.user_workouts, action.user_workout]};

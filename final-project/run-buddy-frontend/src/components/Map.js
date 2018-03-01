@@ -14,15 +14,10 @@ class Map extends React.Component {
 
   //DISPLAY ALL WORKOUTS THAT THAT DONT HAVE AN OWNER ID OF THE CURRENT USER ID
   render() {
-    // let userWorkouts = this.props.currentUser.workouts.map(workout => workout.id)
-    // let avWorkouts = this.props.currentUser.available_workouts.map(workouts => {
-    //   return workouts.filter(workout => !userWorkouts.includes(workout.id))
-    // })
-    // console.log(this.props.currentUser)
-
-    let avWorkouts = this.props.allWorkouts.filter(workout => workout.owner_id !== this.props.currentUser.id)
-    console.log(avWorkouts)
-
+    
+    let displayAssociations = this.props.currentUser.associations_with_workouts.map(user => user.id)
+    let workoutChoices = this.props.allWorkouts.filter(workout => workout.owner_id !== this.props.currentUser.id)
+    let avWorkouts = workoutChoices.filter(workout =>  displayAssociations.includes(workout.owner_id))
 
     return (
       <div>

@@ -120,12 +120,9 @@ export function postUserWorkout(data, workout) {
       headers,
       body: JSON.stringify({data})
     }).then(resp => resp.json())
-    .then(json => {
-      // const {workout_id, user_id} = json
-      // const user_workout = {workout_id, user_id}
-      //const workout = user_workout.workout_id
+    .then(json => {    
       dispatch({ type: 'UPDATE_USER_USERWORKOUTS', user_workout: json })
-      dispatch({type: 'UPDATE_SPECIFIC_WORKOUT', workout:  workout})
+      dispatch({type: 'UPDATE_SPECIFIC_WORKOUT', workout: workout})
     })
   }
 }
