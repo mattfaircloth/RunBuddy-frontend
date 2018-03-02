@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import NavBar from './NavBar';
 import withAuth from '../hocs/withAuth';
-import {Slider, Slide} from 'react-materialize'
+import {Slider, Slide, CardPanel} from 'react-materialize'
 
 
 class Home extends React.Component {
@@ -24,29 +24,34 @@ class Home extends React.Component {
         <NavBar />
         <div>
           <div>
-            {loggedIn ? (<div><h1>Welcome to RunBuddy, {this.props.currentUser.name.split(" ")[0]}!</h1></div>) : null}
+            {loggedIn ? (<div><h3>Welcome, {this.props.currentUser.name.split(" ")[0]}!</h3></div>) : null}
             <Slider>
-              <Slide>
+              <Slide src='RunningNYC.jpg'>
+
             <div>
               <div>
+                <CardPanel>
                 <Link to={'/runbuddy/runners'}>
-                  <div>
+                  <div className='welcome-text'>
                     <div><h2>Find a RunBuddy</h2></div>
                     <div>Are you looking for someone to run with?</div>
                   </div>
                 </Link>
+                </CardPanel>
               </div>
             </div>
             </Slide>
-            <Slide>
+            <Slide src='pairrun.jpg'>
             <div>
               <div>
+                <CardPanel>
                 <Link to={'/runbuddy/workouts'}>
-                  <div>
+                  <div className='welcome-text'>
                     <div><h2>Find a Workout</h2></div>
                     <div>Find a Workout near you!</div>
                   </div>
                 </Link>
+                </CardPanel>
               </div>
             </div>
             </Slide>

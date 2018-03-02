@@ -10,7 +10,12 @@ export function authReducer(state = {}, action) {
         //filter to find workout_id and add it to the workout
       return {...state, workouts: [...state.workouts, action.workout]};
     case 'UPDATE_USER_USERWORKOUTS':
-      return {...state, user_workouts: [...state.user_workouts, action.user_workout]};
+      //add logic so you can only join the workout once
+
+      if (!state.user_workouts.includes(action.user_workout)) {
+        return {...state, user_workouts: [...state.user_workouts, action.user_workout]};
+      }
+
     case 'DELETE_USER_WORKOUTS':
         let newWorkouts = state.workouts
         newWorkouts.splice(newWorkouts.indexOf(action.id), 1)

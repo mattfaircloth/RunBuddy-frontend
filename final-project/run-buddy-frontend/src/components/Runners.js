@@ -12,9 +12,9 @@ class Runners extends React.Component {
     let allRunners;
     if (this.props.searchTerm !== '') {
     let filteredRunners = this.props.runners.filter(runner => runner.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()))
-      allRunners = filteredRunners.map(runner => <h5 key={runner.id} className='runnerTile'>{runner.name}</h5>)
+      allRunners = filteredRunners.map(runner => <RunnerItem key={runner.id}  runner={runner}/>)
     } else {
-      allRunners = this.props.runners.map(runner => <h5 key={runner.name} className='runnerTile'>{runner.name}</h5>)
+      allRunners = this.props.runners.map(runner => <RunnerItem key={runner.id} runner={runner}/>)
     }
 
     return (

@@ -14,10 +14,7 @@ class WorkoutsContainer extends React.Component {
     allWorkouts: []
   }
 
-  componentDidMount = () => {
-    this.props.getAllWorkouts()
-    .then(res => this.setState({ allWorkouts: res }))
-  }
+
 
   componentDidMount() {
     if (this.props.currentPosition.latitude) {
@@ -26,6 +23,8 @@ class WorkoutsContainer extends React.Component {
     } else {
       this.props.getLocation();
     }
+    this.props.getAllWorkouts()
+    .then(res => this.setState({ allWorkouts: res }))
   }
 
   handleMarkerClick = e => {
@@ -50,7 +49,7 @@ class WorkoutsContainer extends React.Component {
                 return <FriendWorkout workout={workout} currentUser={this.props.currentUser} allWorkouts={this.state.allWorkouts}/>
                 }} />
         </Switch>
-        <Row>
+        <Row className='row-main'>
           <Col  s={10} className='map-main'>
             <Map  handleMarkerClick={this.handleMarkerClick} allWorkouts={this.state.allWorkouts}/>
           </Col>
@@ -58,6 +57,7 @@ class WorkoutsContainer extends React.Component {
             <Friends />
           </Col>
         </Row>
+
       </div>
     )
   }

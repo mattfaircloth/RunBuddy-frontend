@@ -8,7 +8,7 @@ class Friends extends React.Component {
 
 
    render() {
-     let friends = this.props.currentUser.friends.map(friend => <Chip key={friend.id}>{friend.name}</Chip>);
+     let friends = this.props.currentUser.friends.map(friend => <div><Chip key={friend.id}>{friend.name}</Chip><br></br></div>);
      return (
        <div>
          <h5>My Friends: </h5>

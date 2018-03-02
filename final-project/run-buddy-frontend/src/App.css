@@ -3,9 +3,26 @@
 
 }
 
-.runbuddy-main-container {
-  /*background-image: url('/bridge.jpg');*/
 
+.welcome-text{
+  color: rgb(223, 117, 118)
+}
+
+.friends-main {
+  outline: #3B0B0B groove thick;
+  outline-color: pink;
+  transition: 0.75s;
+  opacity: 1;
+  position: relative;
+  max-height: 5000px;
+}
+
+.row-main {
+  outline: #3B0B0B groove thick;
+  outline-color: pink;
+  transition: 0.75s;
+  opacity: 1;
+  position: relative;
 }
 
 .runnerTile {
