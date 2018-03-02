@@ -20,10 +20,23 @@ class Map extends React.Component {
     let avWorkouts = workoutChoices.filter(workout =>  displayAssociations.includes(workout.owner_id))
     let joinedWorkouts = this.props.currentUser.workouts;
 
-    //console.log(avWorkouts.map(aw => aw))
+    let avIds = avWorkouts.map(workout => workout.id)
+    let joinedIds = joinedWorkouts.map(workout => workout.id)
 
-    //let final = joinedWorkouts.filter(workout => workout.id === avWorkouts.map(aw => aw))
-    //console.log(final);
+    console.log('Associations with Workouts:',displayAssociations)
+    //console.log(workoutChoices)
+
+    //console.log('Available Workouts Ids', avIds)
+    //console.log('Joined Workouts Ids', joinedIds)
+
+    let differentIds = avIds.filter( (id) => {
+      return !joinedIds.includes(id)
+    })
+
+    let mapWorkouts = avWorkouts.filter((workout) => {
+      return differentIds.includes(workout.id)
+    })
+
 
     return (
       <div>
@@ -35,7 +48,7 @@ class Map extends React.Component {
           zoom={this.props.zoom} >
           <CurrentLocation lat={this.props.currentPosition.latitude} lng={this.props.currentPosition.longitude} />
 
-          {avWorkouts.map(marker => {
+          {mapWorkouts.map(marker => {
               return <Marker  className="existingMarker" key={marker.id}
                                   lat={marker.latitude}
                                   lng={marker.longitude}

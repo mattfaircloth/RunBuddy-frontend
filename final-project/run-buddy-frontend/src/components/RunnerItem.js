@@ -1,13 +1,9 @@
 import React from 'react'
 import {Button, Icon, Collapsible, CollapsibleItem} from 'react-materialize'
 
-class Runners extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+class RunnerItem extends React.Component {
 
   render() {
-
     return (
       <div >
         <Collapsible popout defaultActiveKey={1}>
@@ -15,7 +11,10 @@ class Runners extends React.Component {
               <div>{this.props.runner.email}</div>
               <div>{this.props.runner.phone}</div>
               <div>
-                <Button waves='light' onClick={this.joinWorkout}>Add Friend<Icon left>check</Icon></Button>
+                <Button id={this.props.runner.user_id} waves='light' onClick={this.props.addFriend}>Add Friend<Icon left>check</Icon></Button>
+              </div>
+              <div>
+                <Button id={this.props.runner.user_id} waves='light' onClick={this.props.removeFriend}>Remove Friend<Icon left>close</Icon></Button>
               </div>
             </CollapsibleItem>
         </Collapsible>
@@ -26,4 +25,4 @@ class Runners extends React.Component {
 
 
 
-export default Runners
+export default RunnerItem

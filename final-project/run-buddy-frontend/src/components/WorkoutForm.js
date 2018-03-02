@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
-import {Button, Icon} from 'react-materialize'
+
 
 
 class WorkoutForm extends React.Component {

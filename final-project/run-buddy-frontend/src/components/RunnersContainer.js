@@ -23,7 +23,7 @@ class RunnersContainer extends React.Component {
 
   render() {
     return (
-      <Runners runners={this.state.runners} searchTerm={this.state.searchTerm} handleInput={this.handleInput}/>
+      <Runners runners={this.state.runners} searchTerm={this.state.searchTerm} handleInput={this.handleInput} />
     )
   }
 }

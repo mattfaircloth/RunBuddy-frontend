@@ -120,7 +120,7 @@ export function postUserWorkout(data, workout) {
       headers,
       body: JSON.stringify({data})
     }).then(resp => resp.json())
-    .then(json => {    
+    .then(json => {
       dispatch({ type: 'UPDATE_USER_USERWORKOUTS', user_workout: json })
       dispatch({type: 'UPDATE_SPECIFIC_WORKOUT', workout: workout})
     })
@@ -136,6 +136,35 @@ export function deleteUserWorkout(id, workoutId) {
       method: 'DELETE',
       headers
     }).then(dispatch({ type: 'DELETE_USER_WORKOUTS', id: workoutId}))
+
+  }
+}
+
+export function postUserFriend(data, friend) {
+  return (dispatch) => {
+    return fetch('http://localhost:3001/api/v1/userfriends', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({data})
+    }).then(resp => resp.json())
+    .then(json => {
+      dispatch({ type: 'UPDATE_USER_FRIENDS', user_friend: json })
+      dispatch({type: 'UPDATE_SPECIFIC_FRIEND', friend: friend})
+    })
+  }
+}
+
+export function deleteUserFriend(id, friendId) {
+  return (dispatch) => {
+
+    console.log(id);
+    return fetch(`http://localhost:3001/api/v1/userfriends/${id}`, {
+      method: 'DELETE',
+      headers
+    }).then(
+      dispatch({ type: 'DELETE_USER_FRIENDS', id: friendId}),
+      dispatch({ type: 'DELETE_ASSOCIATION_WITH_WORKOUTS', id: friendId})
+    )
 
   }
 }
