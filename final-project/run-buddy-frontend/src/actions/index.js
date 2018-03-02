@@ -150,6 +150,7 @@ export function postUserFriend(data, friend) {
     .then(json => {
       dispatch({ type: 'UPDATE_USER_FRIENDS', user_friend: json })
       dispatch({type: 'UPDATE_SPECIFIC_FRIEND', friend: friend})
+      dispatch({ type: 'UPDATE_ASSOCIATION_WITH_WORKOUTS', friend: friend})
     })
   }
 }
