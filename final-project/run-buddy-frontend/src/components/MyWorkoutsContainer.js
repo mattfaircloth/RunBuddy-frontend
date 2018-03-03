@@ -6,6 +6,7 @@ import * as actions from '../actions/index'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import {Button} from 'react-materialize'
+import {Row, Col} from 'react-materialize'
 
 class MyWorkoutsContainer extends React.Component {
 
@@ -32,21 +33,25 @@ class MyWorkoutsContainer extends React.Component {
 
     return(
       <div>
+        <Row>
+          <Col s={6}>
         <div>
           <h3>My Workouts:</h3>
           {myWorkouts}
         </div>
+        </Col>
+        <Col s={6}>
         <div>
           <h3>Joined Workouts:</h3>
           {joinedWorkouts}
         </div>
-
+        </Col>
+        </Row>
         <div>
           <Link to="/runbuddy/workouts">
             <Button waves='light'>Back</Button>
           </Link>
         </div>
-
     </div>
     )
   }

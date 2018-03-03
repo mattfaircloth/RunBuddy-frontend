@@ -34,7 +34,7 @@ class JoinedWorkoutItem extends React.Component {
      console.log('User Workouts:', this.props.currentUser.user_workouts);
      return (
        <div>
-         <div>
+         <div className='workout-display-item'>
            <p>Host: {user.name}</p>
            <p>Start Time: {this.props.workout.start_time}</p>
            <p>Date: {this.props.workout.date}</p>

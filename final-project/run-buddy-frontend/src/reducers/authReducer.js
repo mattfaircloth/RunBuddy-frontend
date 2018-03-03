@@ -51,7 +51,7 @@ export function authReducer(state = {}, action) {
 
           console.log('Associations after delete', assWithoutFof);
 
-          debugger
+          //debugger
 
         return {...state, associations_with_workouts: assWithoutFof}
 

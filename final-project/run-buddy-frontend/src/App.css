@@ -1,11 +1,35 @@
 .App {
   text-align: center;
+  font-family: 'Gloria Hallelujah', cursive;
 
 }
 
 
 .welcome-text{
   color: rgb(223, 117, 118)
+}
+
+.map-title {
+  outline: #3B0B0B groove thick;
+  outline-color: pink;
+  transition: 0.75s;
+  opacity: 1;
+  position: relative;
+  max-height: 5000px;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+.workout-form-title {
+  outline: #3B0B0B groove thick;
+  outline-color: pink;
+  transition: 0.75s;
+  opacity: 1;
+  position: relative;
+  max-height: 5000px;
+}
+
+.workout-display-item {
+  font-family: sans-serif;
 }
 
 .friends-main {

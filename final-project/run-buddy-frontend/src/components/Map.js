@@ -40,7 +40,7 @@ class Map extends React.Component {
 
     return (
       <div>
-        <h3>Workouts to Join:</h3>
+        <h3 className='map-title'>Workouts to Join:</h3>
       <div className="google-map">
       <GoogleMapReact
           bootstrapURLKeys={{ key: `${config.GOOGLE_MAPS}`}}

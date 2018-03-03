@@ -10,7 +10,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <div>
-        <Navbar brand='RunBuddy' href='/home' right>
+        <Navbar className='home-title' brand='RunBuddy' href='/home' right>
           <NavItem href='/runbuddy/add-workout'>Create a Workout</NavItem>
           <NavItem href='/runbuddy/workouts'>Find a Workout</NavItem>
           <NavItem href='/runbuddy/myworkouts'>My Workouts</NavItem>
