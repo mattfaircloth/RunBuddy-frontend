@@ -8,25 +8,27 @@ class Friends extends React.Component {
 
 
    render() {
-     let friends = this.props.currentUser.friends.map(friend => <div key={friend.id}><Chip >{friend.name}</Chip><br></br></div>);
+     let friends = this.props.currentUser.friends.map(friend => <div key={friend.user_id}><Chip >{friend.name}</Chip><br></br></div>);
 
-     let friendIds = this.props.currentUser.friends.map(friend => friend.id)
-     let fofIds = this.props.currentUser.associations_with_workouts.map(friend => friend.id)
-     // console.log(friendIds);
-     // console.log(fofIds);
+     let friendIds = this.props.currentUser.friends.map(friend => parseInt(friend.user_id) || friend.id)
+     let fofIds = this.props.currentUser.associations_with_workouts.map(friend => parseInt(friend.user_id) || friend.id)
+     console.log('Friends:', friends);
+     console.log('Friend Ids', friendIds);
+     console.log('Friend of Friend Ids', fofIds);
 
      let differentIds = fofIds.filter( (id) => {
        return !friendIds.includes(id)
      })
 
-     //console.log(differentIds);
+     console.log('Different Ids', differentIds);
 
-     let fof = this.props.currentUser.associations_with_workouts.filter(friend => differentIds.includes(friend.id))
+     let fof = this.props.currentUser.associations_with_workouts.filter(friend => differentIds.includes(friend.id || parseInt(friend.user_id)))
 
-     let fofDisplay = fof.map(friend => <div key={friend.id}><Chip >{friend.name}</Chip><br></br></div>)
+     let fofDisplay = fof.map(friend => <div key={friend.user_id}><Chip >{friend.name}</Chip><br></br></div>)
 
-     //console.log(fof);
-     //{fofDisplay}
+     console.log( 'Friend Display Page', fof);
+     //debugger
+
 
      return (
        <div>
@@ -36,7 +38,7 @@ class Friends extends React.Component {
          </div>
          <div>
            <h5>Friends of Friends: </h5>
-
+           {fofDisplay}
          </div>
        </div>
      )

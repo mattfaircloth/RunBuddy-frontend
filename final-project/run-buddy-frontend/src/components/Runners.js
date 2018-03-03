@@ -23,7 +23,7 @@ class Runners extends React.Component {
      const userFriendId = userFriend.id
      console.log('user friend id', userFriendId)
 
-     this.props.deleteUserFriend(userFriendId, parseInt(friend[0].user_id))
+     this.props.deleteUserFriend(userFriendId, parseInt(friend[0].user_id), friend[0])
      this.props.history.push(`/runbuddy/workouts`)
     }
 

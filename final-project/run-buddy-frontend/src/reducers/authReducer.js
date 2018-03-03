@@ -29,17 +29,19 @@ export function authReducer(state = {}, action) {
     case 'DELETE_USER_FRIENDS':
           let newFriends = state.friends
           newFriends.splice(newFriends.indexOf(action.id), 1)
-          console.log('New Friends', newFriends)
       return {...state, friends: newFriends};
     case 'DELETE_ASSOCIATION_WITH_WORKOUTS':
       //NEED TO CUT OUT ALL OF THE ASSOCIATIONS, NOT JUST ONE
           let newAss = state.associations_with_workouts
-          newAss.splice(newAss.indexOf(action.id), 1)
+          //newAss.splice(newAss.indexOf(action.id), 1)
           //filter out all Friends
           //filter out all friend of Friends
           //check that im not already friends with a friend of friend
-          console.log('New Associations', newAss)
-        return {...state, associations_with_workouts: newAss}
+          let assWithoutFriend = newAss.filter(ass => ass.id !== parseInt(action.friend.user_id))
+          let fofIds = action.friend.friends.map(friend => parseInt(friend.user_id))
+          let assWithoutFof = assWithoutFriend.filter(ass => !fofIds.includes(ass.id))
+
+        return {...state, associations_with_workouts: assWithoutFof}
 
     default:
       return state;

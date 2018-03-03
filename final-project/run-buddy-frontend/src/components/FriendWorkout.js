@@ -26,7 +26,8 @@ class FriendWorkout extends React.Component {
   render() {
     const workout = this.props.workout
     const ownerId = this.props.workout.owner_id
-    const user = this.props.currentUser.associations_with_workouts.find(user => user.id === ownerId)
+    const user = this.props.currentUser.associations_with_workouts.find(user => user.id || parseInt(user.user_id) === ownerId)
+    //debugger
 
     return (
     <div className="parent">

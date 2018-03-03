@@ -155,7 +155,7 @@ export function postUserFriend(data, friend) {
   }
 }
 
-export function deleteUserFriend(id, friendId) {
+export function deleteUserFriend(id, friendId, friend) {
   return (dispatch) => {
 
     console.log(id);
@@ -164,7 +164,7 @@ export function deleteUserFriend(id, friendId) {
       headers
     }).then(
       dispatch({ type: 'DELETE_USER_FRIENDS', id: friendId}),
-      dispatch({ type: 'DELETE_ASSOCIATION_WITH_WORKOUTS', id: friendId})
+      dispatch({ type: 'DELETE_ASSOCIATION_WITH_WORKOUTS', friend: friend})
     )
 
   }
