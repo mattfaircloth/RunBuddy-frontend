@@ -135,7 +135,10 @@ export function deleteUserWorkout(id, workoutId) {
     return fetch(`http://localhost:3001/api/v1/userworkouts/${id}`, {
       method: 'DELETE',
       headers
-    }).then(dispatch({ type: 'DELETE_USER_WORKOUTS', id: workoutId}))
+    }).then(
+      dispatch({ type: 'DELETE_USER_WORKOUTS', id: workoutId}),
+      dispatch({ type: 'DELETE_USER_USERWORKOUTS', id: id})
+    )
 
   }
 }

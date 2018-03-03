@@ -13,11 +13,18 @@ export function authReducer(state = {}, action) {
       //add logic so you can only join the workout once
       if (!state.user_workouts.includes(action.user_workout)) {
         return {...state, user_workouts: [...state.user_workouts, action.user_workout]};
+      } else {
+        return {...state, user_workouts: [...state.user_workouts] }
       }
     case 'DELETE_USER_WORKOUTS':
         let newWorkouts = state.workouts
-        newWorkouts.splice(newWorkouts.indexOf(action.id), 1)
-      return {...state, workouts: newWorkouts};
+        //newWorkouts.splice(newWorkouts.indexOf(action.id), 1)
+        let x = newWorkouts.filter(workout => workout.id !== action.id)
+      return {...state, workouts: x};
+    case 'DELETE_USER_USERWORKOUTS':
+        let newUserWorkouts = state.user_workouts.filter(uw => uw.id !== action.id)
+        console.log('New User Workouts', newUserWorkouts);
+        return {...state, user_workouts: newUserWorkouts}
     case 'UPDATE_USER_FRIENDS':
       return {...state, user_friends: [...state.user_friends, action.user_friend]};
     case 'UPDATE_SPECIFIC_FRIEND':
