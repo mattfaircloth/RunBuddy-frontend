@@ -23,7 +23,7 @@ export function authReducer(state = {}, action) {
       return {...state, workouts: x};
     case 'DELETE_USER_USERWORKOUTS':
         let newUserWorkouts = state.user_workouts.filter(uw => uw.id !== action.id)
-        console.log('New User Workouts', newUserWorkouts);
+        //console.log('New User Workouts', newUserWorkouts);
         return {...state, user_workouts: newUserWorkouts}
     case 'UPDATE_USER_FRIENDS':
       return {...state, user_friends: [...state.user_friends, action.user_friend]};
@@ -34,19 +34,24 @@ export function authReducer(state = {}, action) {
 
           return {...state, associations_with_workouts: [...state.associations_with_workouts, action.friend, ...action.friend.friends]}
     case 'DELETE_USER_FRIENDS':
-          let newFriends = state.friends
-          newFriends.splice(newFriends.indexOf(action.id), 1)
-      return {...state, friends: newFriends};
+          let newFriends = state.friends.filter(friend => friend.id !== action.id)
+          //newFriends.splice(newFriends.indexOf(action.id), 1)
+          //debugger
+          console.log('New Friends', newFriends);
+          return {...state, friends: newFriends};
     case 'DELETE_ASSOCIATION_WITH_WORKOUTS':
       //NEED TO CUT OUT ALL OF THE ASSOCIATIONS, NOT JUST ONE
           let newAss = state.associations_with_workouts
-          //newAss.splice(newAss.indexOf(action.id), 1)
-          //filter out all Friends
-          //filter out all friend of Friends
+          console.log('Current Associations', newAss);
+          //when i have a friend who has a fof and i delete the fof its not moving him into fof display
           //check that im not already friends with a friend of friend
           let assWithoutFriend = newAss.filter(ass => ass.id !== parseInt(action.friend.user_id))
           let fofIds = action.friend.friends.map(friend => parseInt(friend.user_id))
           let assWithoutFof = assWithoutFriend.filter(ass => !fofIds.includes(ass.id))
+
+          console.log('Associations after delete', assWithoutFof);
+
+          debugger
 
         return {...state, associations_with_workouts: assWithoutFof}
 

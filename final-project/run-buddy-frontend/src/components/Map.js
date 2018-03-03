@@ -23,7 +23,7 @@ class Map extends React.Component {
     let avIds = avWorkouts.map(workout => workout.id)
     let joinedIds = joinedWorkouts.map(workout => workout.id)
 
-    //console.log('Associations with Workouts:', displayAssociations)
+    console.log('Associations with Workouts:', displayAssociations)
     //console.log(workoutChoices)
 
     //console.log('Available Workouts Ids', avIds)

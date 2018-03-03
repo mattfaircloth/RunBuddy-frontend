@@ -12,9 +12,9 @@ class Friends extends React.Component {
 
      let friendIds = this.props.currentUser.friends.map(friend => parseInt(friend.user_id) || friend.id)
      let fofIds = this.props.currentUser.associations_with_workouts.map(friend => parseInt(friend.user_id) || friend.id)
-     // console.log('Friends:', friends);
-     // console.log('Friend Ids', friendIds);
-     // console.log('Friend of Friend Ids', fofIds);
+      console.log('Friends:', friends);
+     //console.log('Friend Ids', friendIds);
+      console.log('Friend of Friend Ids', fofIds);
 
      let differentIds = fofIds.filter( (id) => {
        return !friendIds.includes(id)
@@ -26,7 +26,7 @@ class Friends extends React.Component {
 
      let fofDisplay = fof.map(friend => <div key={friend.email}><Chip >{friend.name}</Chip><br></br></div>)
 
-     //console.log( 'Friend Display Page', fof);
+     console.log( 'Friend Display Page', fof);
      //debugger
 
 
