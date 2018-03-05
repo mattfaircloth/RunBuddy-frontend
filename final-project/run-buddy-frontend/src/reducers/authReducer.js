@@ -40,33 +40,41 @@ export function authReducer(state = {}, action) {
           console.log('New Friends', newFriends);
           return {...state, friends: newFriends};
     case 'DELETE_ASSOCIATION_WITH_WORKOUTS':
-      //NEED TO CUT OUT ALL OF THE ASSOCIATIONS, NOT JUST ONE
-          let newAss = state.associations_with_workouts
-          console.log('Current Associations', newAss);
+
           //when i have a friend who has a fof and i delete the fof its not moving him into fof display
           //check that im not already friends with a friend of friend
 
-          let assWithoutFriend
-          //if the friend being deleted is a friend of mine, dont delete him from the ass array
-          let mutualFriendIds = state.friends.map(friend => friend.id)
+          //if the friend that i'm deleting has a friend that is the same as mine, dont delete them from the array
+          //remove the selectedfriend, but keep the friend that is my friend
+
+          // let mutualFriendIds = state.friends.map(friend => friend.id)
+
+          // console.log('My Friends', mutualFriendIds);
+          // console.log('friend of friend Ids:', fofIds);
+
+
+          // let differentIds = mutualFriendIds.filter( (id) => {
+          //   return fofIds.includes(id)
+          // })
+          // console.log('Different Ids', differentIds);
+          // //debugger
+
+          //let assWithoutFriend = newAss.filter(ass => differentIds.includes(ass.id))
+
+          // if (differentIds.length > 0) {
+          //   assWithoutFriend = newAss.filter(ass => !differentIds.includes(ass.id))
+          // } else {
+          //   assWithoutFriend = newAss.filter(ass => ass.id !== parseInt(action.friend.user_id))
+          // }
+
+          let newAss = state.associations_with_workouts
+          console.log('Current Associations', newAss);
+          
+          let assWithoutFriend = newAss.filter(ass => ass.id !== parseInt(action.friend.user_id))
+
           let fofIds = action.friend.friends.map(friend => parseInt(friend.user_id))
 
-          let differentIds = mutualFriendIds.filter( (id) => {
-            return fofIds.includes(id)
-          })
-          console.log('different Ids', differentIds);
-          //debugger
-
-          if (differentIds.length > 0) {
-            assWithoutFriend = newAss
-          } else {
-            assWithoutFriend = newAss.filter(ass => ass.id !== parseInt(action.friend.user_id))
-          }
-
           console.log('Associations without the friend being removed:', assWithoutFriend);
-
-
-          console.log('friend of friend Ids to be removed removed:', fofIds);
 
           let myFriendButFoF = state.friends.filter(friend => fofIds.includes(friend.id))
           console.log('Boom', myFriendButFoF[0]);
@@ -78,10 +86,6 @@ export function authReducer(state = {}, action) {
           } else if (fofIds.includes(myFriendButFoF[0].id)) {
             assWithoutFof = assWithoutFriend
           }
-
-          // else {
-          //   assWithoutFof = assWithoutFriend.filter(ass => !fofIds.includes(ass.id))
-          // }
 
           console.log('Associations after delete', assWithoutFof);
 
