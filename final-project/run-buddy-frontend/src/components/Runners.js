@@ -7,9 +7,10 @@ import { withRouter } from 'react-router'
 class Runners extends React.Component {
 
   addFriend = (e) => {
-      const friend = this.props.runners.filter(runner => runner.user_id === e.currentTarget.id)
+      const friend = this.props.runners.filter(runner => runner.id === parseInt(e.currentTarget.id))
       const currentUser = this.props.currentUser
-      const data = {user_id: currentUser.id, friend_id: parseInt(friend[0].user_id)}
+      //debugger
+      const data = {user_id: currentUser.id, friend_id: parseInt(friend[0].id)}
       console.log('_____')
       console.log(data)
       this.props.postUserFriend(data, friend[0])
@@ -17,25 +18,27 @@ class Runners extends React.Component {
    }
 
    removeFriend = (e) => {
-     const friend = this.props.runners.filter(runner => runner.user_id === e.currentTarget.id)
+     const friend = this.props.runners.filter(runner => runner.id === parseInt(e.currentTarget.id))
      const currentUser = this.props.currentUser
-     const userFriend = currentUser.user_friends.find(uf => parseInt(friend[0].user_id) === uf.friend_id)
+     //debugger
+     const userFriend = currentUser.user_friends.find(uf => parseInt(friend[0].id) === uf.friend_id)
      const userFriendId = userFriend.id
      console.log('user friend id', userFriendId)
 
-     this.props.deleteUserFriend(userFriendId, parseInt(friend[0].user_id), friend[0])
+
+     this.props.deleteUserFriend(userFriendId, parseInt(friend[0].id), friend[0])
      this.props.history.push(`/runbuddy/workouts`)
     }
 
 
   render() {
-    let otherRunners = this.props.runners.filter(runner => parseInt(runner.user_id) !== this.props.currentUser.id)
+    let otherRunners = this.props.runners.filter(runner => parseInt(runner.id) !== this.props.currentUser.id)
     let allRunners;
     if (this.props.searchTerm !== '') {
     let filteredRunners = otherRunners.filter(runner => runner.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()))
-      allRunners = filteredRunners.map(runner => <RunnerItem key={runner.user_id}  runner={runner} addFriend={this.addFriend} removeFriend={this.removeFriend}/>)
+      allRunners = filteredRunners.map(runner => <RunnerItem key={runner.id}  runner={runner} addFriend={this.addFriend} removeFriend={this.removeFriend}/>)
     } else {
-      allRunners = otherRunners.map(runner => <RunnerItem key={runner.user_id} runner={runner} addFriend={this.addFriend}removeFriend={this.removeFriend}/>)
+      allRunners = otherRunners.map(runner => <RunnerItem key={runner.id} runner={runner} addFriend={this.addFriend}removeFriend={this.removeFriend}/>)
     }
 
     return (

@@ -5,6 +5,7 @@ const headers = {
   'Accepts': 'application/json'
 };
 
+
 export function fetchUser() {
   return (dispatch) => {
     const token = localStorage.getItem("token")
@@ -17,18 +18,6 @@ export function fetchUser() {
   }
 }
 
-export function updateUser() {
-  return (dispatch) => {
-    const token = localStorage.getItem("token")
-    return fetch('http://localhost:3001/api/v1/current_user', {
-      headers: {'Authorization': token}
-    }).then(resp => resp.json())
-    .then(user => {
-      //console.log(user);
-      dispatch({ type: 'LOGIN_USER', payload: user })
-    })
-  }
-}
 
 export function getAllUsers() {
   return (dispatch) => {
@@ -178,14 +167,11 @@ export function deleteUserFriend(id, friendId, friend) {
     return fetch(`http://localhost:3001/api/v1/userfriends/${id}`, {
       method: 'DELETE',
       headers
-    }).then(
-      dispatch({ type: 'DELETE_USER_FRIENDS', id: friendId}),
-      dispatch({ type: 'DELETE_ASSOCIATION_WITH_WORKOUTS', friend: friend}),
-      dispatch(updateUser())
+    }).then( () => {
+      dispatch({ type: 'DELETE_USER_FRIENDS', id: friendId})
+      dispatch({ type: 'DELETE_ASSOCIATION_WITH_WORKOUTS', friend: friend})
+    }
     )
-    // .then(
-    //   dispatch(updateUser())
-    // )
 
   }
 }

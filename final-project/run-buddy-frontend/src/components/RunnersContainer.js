@@ -22,6 +22,7 @@ class RunnersContainer extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <Runners runners={this.state.runners} searchTerm={this.state.searchTerm} handleInput={this.handleInput} />
     )

@@ -5,8 +5,8 @@ import { Collapsible, CollapsibleItem, Icon, Button} from 'react-materialize'
 
 class FriendDetail extends React.Component {
 
-
    render() {
+    // console.log('Friend Detail Info', this.props.friend);
      return (
        <div >
          <Collapsible popout defaultActiveKey={1}>
@@ -17,7 +17,6 @@ class FriendDetail extends React.Component {
              </CollapsibleItem>
          </Collapsible>
        </div>
-
      )
    }
 }

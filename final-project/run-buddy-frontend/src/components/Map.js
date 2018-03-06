@@ -15,7 +15,7 @@ class Map extends React.Component {
   //DISPLAY ALL WORKOUTS THAT THAT DONT HAVE AN OWNER ID OF THE CURRENT USER ID
   render() {
 
-    let displayAssociations = this.props.currentUser.associations_with_workouts.map(ass => parseInt(ass.user_id) || ass.id)
+    let displayAssociations = this.props.currentUser.associations_with_workouts.map(ass => ass.id)
     let workoutChoices = this.props.allWorkouts.filter(workout => workout.owner_id !== this.props.currentUser.id)
     let avWorkouts = workoutChoices.filter(workout =>  displayAssociations.includes(workout.owner_id))
     let joinedWorkouts = this.props.currentUser.workouts;

@@ -15,21 +15,25 @@ class Friends extends React.Component {
      let fofIds = this.props.currentUser.associations_with_workouts.map(friend => parseInt(friend.user_id) || friend.id)
       console.log('My Friends:', friends);
      //console.log('Friend Ids', friendIds);
-      console.log('Friend of Friend Ids', fofIds);
+      console.log('Association with Workout Ids', fofIds);
 
      let differentIds = fofIds.filter( (id) => {
        return !friendIds.includes(id)
      })
 
-     //console.log('Different Ids', differentIds);
 
-     let fof = this.props.currentUser.associations_with_workouts.filter(friend => differentIds.includes(friend.id || parseInt(friend.user_id)))
+     let fof = this.props.currentUser.friends.map(friend => friend.friends).reduce((acc, friend) => acc.concat(friend))
 
-     let fofDisplay = fof.map(friend => <FriendDetail key={friend.email} friend={friend} />)
+     let newFriendIds = this.props.currentUser.friends.map(friend => friend.id)
 
-     console.log( 'Friend Display Page, FoF:', fof);
+     let filteredFoF = fof.filter(friend => !newFriendIds.includes(friend.id))
+
+     //this.props.currentUser.associations_with_workouts.filter(friend => differentIds.includes(friend.id || parseInt(friend.user_id)))
+
+     let fofDisplay = filteredFoF.map(friend => <FriendDetail key={friend.email} friend={friend} />)
+
+     //console.log( 'Friend Display Page, Association with Workout:', fof);
      //debugger
-
 
      return (
        <div>

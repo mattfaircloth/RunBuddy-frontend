@@ -4,6 +4,7 @@ export function authReducer(state = {}, action) {
       return action.payload;
     case 'LOGOUT_USER':
       return {};
+
     case 'UPDATE_USER_WORKOUTS':
       return {...state, workouts: [...state.workouts, action.workout]};
     case 'UPDATE_SPECIFIC_WORKOUT':
@@ -31,7 +32,8 @@ export function authReducer(state = {}, action) {
         return {...state, friends: [...state.friends, action.friend]};
     case 'UPDATE_ASSOCIATION_WITH_WORKOUTS':
 
-
+          console.log([...state.associations_with_workouts, action.friend, ...action.friend.friends]);
+          //debugger
           return {...state, associations_with_workouts: [...state.associations_with_workouts, action.friend, ...action.friend.friends]}
     case 'DELETE_USER_FRIENDS':
           let newFriends = state.friends.filter(friend => friend.id !== action.id)
@@ -40,6 +42,24 @@ export function authReducer(state = {}, action) {
           console.log('New Friends', newFriends);
           return {...state, friends: newFriends};
     case 'DELETE_ASSOCIATION_WITH_WORKOUTS':
+
+          let updatedFriends = state.friends.map(friend => friend)
+
+          let fof = state.friends.map(friend => friend.friends).reduce((acc, friend) => acc.concat(friend))
+
+          let both = updatedFriends.concat(fof)
+
+          //debugger
+
+          //let filteredFoF = fof.filter(friend => !newFriendIds.includes(friend.id))
+
+          let newAss = both.map(friend => friend)
+
+          //debugger
+
+          //state.associations_with_workouts.filter(ass => ass.id !== action.friend.id)
+          //debugger
+            return {...state, associations_with_workouts: newAss}
 
           //when i have a friend who has a fof and i delete the fof its not moving him into fof display
           //check that im not already friends with a friend of friend
@@ -67,31 +87,39 @@ export function authReducer(state = {}, action) {
           //   assWithoutFriend = newAss.filter(ass => ass.id !== parseInt(action.friend.user_id))
           // }
 
-          let newAss = state.associations_with_workouts
-          console.log('Current Associations', newAss);
-          
-          let assWithoutFriend = newAss.filter(ass => ass.id !== parseInt(action.friend.user_id))
+          // let newAss = state.associations_with_workouts
+          // console.log('Associations before delete', newAss);
+          // debugger
+          //
+          // let assWithoutFriend = [...newAss, action.friend]
+          //
+          // debugger
+          // //newAss.conca(ass => ass.id !== parseInt(action.friend.user_id))
+          //
+          // let fofIds = action.friend.friends.map(friend => parseInt(friend.user_id))
+          //
+          //
+          // console.log('Associations without the targeted friend being removed:', assWithoutFriend);
+          //
+          // let myFriendButFoF = state.friends.filter(friend => fofIds.includes(friend.id))
+          // console.log('My friend but also an Association', myFriendButFoF[0]);
+          //
+          // let assWithoutFof;
+          //
+          // if (myFriendButFoF[0] === undefined) {
+          //   assWithoutFof = assWithoutFriend.filter(ass => !fofIds.includes(ass.id))
+          // } else if (fofIds.includes(myFriendButFoF[0].id)) {
+          //   assWithoutFof = assWithoutFriend
+          // }
+          //
+          // console.log('Associations after delete', assWithoutFof);
+          //
+          // //debugger
 
-          let fofIds = action.friend.friends.map(friend => parseInt(friend.user_id))
-
-          console.log('Associations without the friend being removed:', assWithoutFriend);
-
-          let myFriendButFoF = state.friends.filter(friend => fofIds.includes(friend.id))
-          console.log('Boom', myFriendButFoF[0]);
-
-          let assWithoutFof;
-
-          if (myFriendButFoF[0] === undefined) {
-            assWithoutFof = assWithoutFriend.filter(ass => !fofIds.includes(ass.id))
-          } else if (fofIds.includes(myFriendButFoF[0].id)) {
-            assWithoutFof = assWithoutFriend
-          }
-
-          console.log('Associations after delete', assWithoutFof);
-
+          //let newFoF = state.friends.reduce((acc, friend) => acc.concat(friend.friends))
           //debugger
 
-        return {...state, associations_with_workouts: assWithoutFof}
+
 
     default:
       return state;
