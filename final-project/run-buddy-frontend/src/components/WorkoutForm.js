@@ -55,7 +55,7 @@ class WorkoutForm extends React.Component {
           <div className="ui two column stackable grid">
             <h2 className='workout-form-title'>Create a Workout</h2>
                 <div className="column">
-                  <div className="parent div">
+                  <div >
                     <h4 className="ui dividing header">Workout Details</h4>
 
                     <div className="field">

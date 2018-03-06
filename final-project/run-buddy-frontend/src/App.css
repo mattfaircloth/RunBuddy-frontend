@@ -6,35 +6,54 @@
 
 
 .welcome-text{
-  color: rgb(223, 117, 118)
+  color: red;
+}
+
+.friend-workout {
+  background-color: grey;
+}
+
+.parent {
+  outline: red groove thick;
+  outline-color: red;
+  transition: 0.75s;
+  opacity: 1;
+  position: relative;
+  max-height: 5000px;
+}
+
+.home-title {
+  background-color: black;
+}
+
+.black-button {
+  background-color: black;
 }
 
 .map-title {
-  outline: #3B0B0B groove thick;
-  outline-color: pink;
-  transition: 0.75s;
-  opacity: 1;
-  position: relative;
-  max-height: 5000px;
-  font-family: 'Gloria Hallelujah', cursive;
+
 }
 
-.workout-form-title {
-  outline: #3B0B0B groove thick;
-  outline-color: pink;
-  transition: 0.75s;
-  opacity: 1;
-  position: relative;
-  max-height: 5000px;
+.profile-button {
+  background-color: red;
 }
+
+.back-button {
+  background-color: red;
+}
+
+
+
+.host {
+  color: rgb(80, 163, 154)
+}
+
 
 .workout-display-item {
   font-family: sans-serif;
 }
 
 .friends-main {
-  outline: #3B0B0B groove thick;
-  outline-color: pink;
   transition: 0.75s;
   opacity: 1;
   position: relative;
@@ -42,8 +61,8 @@
 }
 
 .row-main {
-  outline: #3B0B0B groove thick;
-  outline-color: pink;
+  outline: red groove thick;
+  outline-color: red;
   transition: 0.75s;
   opacity: 1;
   position: relative;

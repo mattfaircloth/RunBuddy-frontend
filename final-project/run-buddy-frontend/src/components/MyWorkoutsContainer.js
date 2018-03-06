@@ -49,7 +49,7 @@ class MyWorkoutsContainer extends React.Component {
         </Row>
         <div>
           <Link to="/runbuddy/workouts">
-            <Button waves='light'>Back</Button>
+            <Button className='back-button' waves='light'>Back</Button>
           </Link>
         </div>
     </div>

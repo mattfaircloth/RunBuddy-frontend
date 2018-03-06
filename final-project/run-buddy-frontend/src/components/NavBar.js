@@ -15,7 +15,7 @@ class NavBar extends React.Component {
           <NavItem href='/runbuddy/workouts'>Find a Workout</NavItem>
           <NavItem href='/runbuddy/myworkouts'>My Workouts</NavItem>
         <SideNav
-          trigger={<Button>Profile</Button>}
+          trigger={<Button className='profile-button'>Profile</Button>}
            options={{ closeOnClick: true }} >
 
            <SideNavItem userView

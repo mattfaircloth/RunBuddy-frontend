@@ -11,10 +11,10 @@ class RunnerItem extends React.Component {
               <div>{this.props.runner.email}</div>
               <div>{this.props.runner.phone}</div>
               <div>
-                <Button id={this.props.runner.user_id} waves='light' onClick={this.props.addFriend}>Add Friend<Icon left>check</Icon></Button>
+                <Button className='profile-button' id={this.props.runner.user_id} waves='light' onClick={this.props.addFriend}>Add Friend<Icon left>check</Icon></Button>
               </div>
               <div>
-                <Button id={this.props.runner.user_id} waves='light' onClick={this.props.removeFriend}>Remove Friend<Icon left>close</Icon></Button>
+                <Button className='profile-button' id={this.props.runner.user_id} waves='light' onClick={this.props.removeFriend}>Remove Friend<Icon left>close</Icon></Button>
               </div>
             </CollapsibleItem>
         </Collapsible>

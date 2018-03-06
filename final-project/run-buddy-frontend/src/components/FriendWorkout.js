@@ -39,7 +39,7 @@ class FriendWorkout extends React.Component {
     return (
     <div className="parent">
             <Col m={6} s={12}>
-		            <Card className='blue-grey darken-1' textClassName='white-text' >
+		            <Card className='friend-workout' textClassName='white-text' >
                   <div>
                     <h4 className="ui header">
                       Workout Details:
@@ -62,19 +62,19 @@ class FriendWorkout extends React.Component {
                         <p>Pace: {workout.pace} per minute</p>
                       </div>
                     </div>
+                    <div>
+                      <Button className='black-button' waves='light' onClick={this.joinWorkout}>Join Workout<Icon left>check</Icon></Button>
+                        <Link to="/runbuddy/workouts">
+                          <Button className='black-button' waves='light'>Back</Button>
+                        </Link>
+                    </div>
 		            </Card>
+
             </Col>
 
-      <div className="back-button">
-        <div>
-          <Button waves='light' onClick={this.joinWorkout}>Join Workout<Icon left>check</Icon></Button>
-            <Link to="/runbuddy/workouts">
-              <Button waves='light'>Back</Button>
-            </Link>
-        </div>
-        <div>
-        </div>
-      </div>
+
+
+
     </div>
     )
   }

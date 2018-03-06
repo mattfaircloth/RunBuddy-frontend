@@ -2,7 +2,7 @@ import React from 'react'
 import * as actions from '../actions/index';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
-import {Button, Icon} from 'react-materialize'
+import {Button, Icon, Card, CardTitle, CardPanel} from 'react-materialize'
 
 class JoinedWorkoutItem extends React.Component {
 
@@ -33,21 +33,25 @@ class JoinedWorkoutItem extends React.Component {
      //console.log(user);
      console.log('User Workouts:', this.props.currentUser.user_workouts);
      return (
-       <div>
-         <div className='workout-display-item'>
-           <p>Host: {user.name}</p>
-           <p>Start Time: {this.props.workout.start_time}</p>
-           <p>Date: {this.props.workout.date}</p>
-           <p>Address: {this.props.workout.address}</p>
-           <p>Distance: {this.props.workout.distance}</p>
-           <p>Pace: {this.props.workout.pace}</p>
+       <div className='workout-display-item'>
+         <Card className='large'
+           header={<CardTitle image='../nyc.jpg'><CardPanel className='host'>Host: {user.name}</CardPanel>
 
-         </div>
-         <div>
-           <Button waves='light' onClick={this.leaveWorkout}>Leave Workout<Icon left>close</Icon></Button>
+           </CardTitle>}
+           actions={<Button waves='light' onClick={this.leaveWorkout}>Leave Workout<Icon left>close</Icon></Button>}>
 
-           <p>__________________________________</p>
-         </div>
+
+             <p>Start Time: {this.props.workout.start_time}</p>
+             <p>Date: {this.props.workout.date}</p>
+             <p>Address: {this.props.workout.address}</p>
+             <p>Distance: {this.props.workout.distance}</p>
+             <p>Pace: {this.props.workout.pace}</p>
+
+
+
+
+         </Card>
+
        </div>
      )
    }

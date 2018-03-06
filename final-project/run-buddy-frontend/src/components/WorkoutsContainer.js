@@ -50,10 +50,10 @@ class WorkoutsContainer extends React.Component {
                 }} />
         </Switch>
         <Row className='row-main'>
-          <Col  s={10} className='map-main'>
+          <Col  s={9} className='map-main'>
             <Map  handleMarkerClick={this.handleMarkerClick} allWorkouts={this.state.allWorkouts}/>
           </Col>
-          <Col  s={2} className='friends-main'>
+          <Col  s={3} className='friends-main'>
             <Friends />
           </Col>
         </Row>
