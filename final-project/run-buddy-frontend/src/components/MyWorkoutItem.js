@@ -14,17 +14,11 @@ class MyWorkoutItem extends React.Component {
 
            </CardTitle>}
            >
-
-
              <p>Start Time: {this.props.workout.start_time}</p>
              <p>Date: {this.props.workout.date}</p>
              <p>Address: {this.props.workout.address}</p>
              <p>Distance: {this.props.workout.distance}</p>
              <p>Pace: {this.props.workout.pace}</p>
-
-
-
-
          </Card>
 
        </div>

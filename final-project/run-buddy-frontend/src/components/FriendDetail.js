@@ -7,10 +7,7 @@ class FriendDetail extends React.Component {
 
 
    render() {
-     console.log('Franzzzz', this.props.friend);
-
      return (
-
        <div >
          <Collapsible popout defaultActiveKey={1}>
              <CollapsibleItem header={this.props.friend.name} icon='add'>
