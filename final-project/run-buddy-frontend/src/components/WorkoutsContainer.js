@@ -11,7 +11,8 @@ import {Row, Col} from 'react-materialize'
 class WorkoutsContainer extends React.Component {
 
   state = {
-    allWorkouts: []
+    allWorkouts: [],
+    searchTerm: ''
   }
 
 
@@ -36,6 +37,12 @@ class WorkoutsContainer extends React.Component {
     this.props.history.push(`/runbuddy/workouts/${workoutSlug}`);
   }
 
+  handleInput = (event) => {
+    this.setState({
+      searchTerm: event.target.value,
+    })
+  }
+
 
   render() {
     return(
@@ -49,9 +56,23 @@ class WorkoutsContainer extends React.Component {
                 return <FriendWorkout workout={workout} currentUser={this.props.currentUser} allWorkouts={this.state.allWorkouts}/>
                 }} />
         </Switch>
+        <Row></Row>
+
         <Row className='row-main'>
-          <Col  s={9} className='map-main'>
-            <Map  handleMarkerClick={this.handleMarkerClick} allWorkouts={this.state.allWorkouts}/>
+          <Row></Row>
+          <Row></Row>
+          <Row>
+            <Col s={4}></Col>
+            <Col s={6}>
+              <form className='search-bar-2'>
+                <input type='search' placeholder='Search for Workouts by Pace' onChange={this.handleInput}></input>
+              </form>
+            </Col>
+            <Col s={2}></Col>
+          </Row>
+          <Col s={2}></Col>
+          <Col  s={7} className='map-main'>
+            <Map  handleMarkerClick={this.handleMarkerClick} allWorkouts={this.state.allWorkouts} searchTerm={this.state.searchTerm}/>
           </Col>
           <Col  s={3} className='friends-main'>
             <Friends />

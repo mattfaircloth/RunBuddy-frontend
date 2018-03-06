@@ -3,6 +3,7 @@ import RunnerItem from './RunnerItem'
 import { connect } from 'react-redux'
 import * as actions from '../actions/index'
 import { withRouter } from 'react-router'
+import {Row, Col} from 'react-materialize'
 
 class Runners extends React.Component {
 
@@ -43,11 +44,19 @@ class Runners extends React.Component {
 
     return (
       <div>
-        <form className='search-bar'>
-          <input type='search' placeholder='Search for a Runner' onChange={this.props.handleInput}></input>
-        </form>
-        <h3>Runners:</h3>
-        {allRunners}
+        <Row>
+          <Col s={4}></Col>
+          <Col s={4}>
+            <h3>Runners:</h3>
+              <form className='search-bar'>
+                <input type='search' placeholder='Search for a Runner' onChange={this.props.handleInput}></input>
+              </form>
+            {allRunners}
+          </Col>
+
+          <Col s={4}></Col>
+        </Row>
+
       </div>
     )
   }

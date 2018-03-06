@@ -21,12 +21,21 @@ class Friends extends React.Component {
        return !friendIds.includes(id)
      })
 
+     let fof
+     if (this.props.currentUser.friends.length !== 0) {
+       fof = this.props.currentUser.friends.map(friend => friend.friends).reduce((acc, friend) => acc.concat(friend))
+     } else {
+       fof = []
+     }
 
-     let fof = this.props.currentUser.friends.map(friend => friend.friends).reduce((acc, friend) => acc.concat(friend))
+
+     let fofWithoutCurrentUser = fof.filter(friend => friend.id !== this.props.currentUser.id)
+
+     //debugger
 
      let newFriendIds = this.props.currentUser.friends.map(friend => friend.id)
 
-     let filteredFoF = fof.filter(friend => !newFriendIds.includes(friend.id))
+     let filteredFoF = fofWithoutCurrentUser.filter(friend => !newFriendIds.includes(friend.id))
 
      //this.props.currentUser.associations_with_workouts.filter(friend => differentIds.includes(friend.id || parseInt(friend.user_id)))
 

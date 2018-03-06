@@ -4,6 +4,7 @@ import * as actions from '../actions/index';
 import { connect }  from 'react-redux';
 import NavBar from './NavBar'
 import config from '../config'
+import {Row, Col} from 'react-materialize'
 
 class Login extends React.Component {
   state = {
@@ -44,11 +45,19 @@ class Login extends React.Component {
         <div>
           <div>
             <h3>Sign In!</h3>
-            <form onSubmit={this.handleForm}>
-              <input type='text' name='username' placeholder='Username' onChange={this.handleLoginChange}></input>
-              <input type='password' name='password' placeholder='Password' onChange={this.handleLoginChange}></input>
-              <input type='submit' value='Sign In' onClick={this.handleLogin}></input>
-            </form>
+            <Row>
+              <Col s={4}></Col>
+              <Col s={6}>
+                <form className='signin' onSubmit={this.handleForm}>
+                  <input  type='text' name='username' placeholder='Username' onChange={this.handleLoginChange}></input>
+                  <input  type='password' name='password' placeholder='Password' onChange={this.handleLoginChange}></input>
+                  <input type='submit' value='Sign In' onClick={this.handleLogin}></input>
+                </form>
+              </Col>
+              <Col s={2}></Col>
+
+            </Row>
+
           </div>
           <h4>OR</h4>
         <FacebookLogin socialId={config.FACEBOOK_KEY}

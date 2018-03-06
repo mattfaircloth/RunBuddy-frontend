@@ -1,7 +1,22 @@
 .App {
   text-align: center;
   font-family: 'Gloria Hallelujah', cursive;
+}
 
+.collap {
+  width: 650px
+}
+
+.search-bar {
+  width: 650px
+}
+
+.search-bar-2 {
+  width: 500px;
+}
+
+.signin {
+  width: 650px
 }
 
 
@@ -11,6 +26,7 @@
 
 .friend-workout {
   background-color: grey;
+  font-family: sans-serif;
 }
 
 .parent {
@@ -61,11 +77,15 @@
 }
 
 .row-main {
-  outline: red groove thick;
+  border-top: red groove thick;
   outline-color: red;
   transition: 0.75s;
   opacity: 1;
   position: relative;
+}
+
+.whole-page {
+
 }
 
 .runnerTile {

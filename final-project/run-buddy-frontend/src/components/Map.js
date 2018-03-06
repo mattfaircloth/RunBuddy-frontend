@@ -15,6 +15,15 @@ class Map extends React.Component {
   //DISPLAY ALL WORKOUTS THAT THAT DONT HAVE AN OWNER ID OF THE CURRENT USER ID
   render() {
 
+    // let otherRunners = this.props.runners.filter(runner => parseInt(runner.id) !== this.props.currentUser.id)
+    // let allRunners;
+    // if (this.props.searchTerm !== '') {
+    // let filteredRunners = otherRunners.filter(runner => runner.name.toLowerCase().includes(this.props.searchTerm.toLowerCase()))
+    //   allRunners = filteredRunners.map(runner => <RunnerItem key={runner.id}  runner={runner} addFriend={this.addFriend} removeFriend={this.removeFriend}/>)
+    // } else {
+    //   allRunners = otherRunners.map(runner => <RunnerItem key={runner.id} runner={runner} addFriend={this.addFriend}removeFriend={this.removeFriend}/>)
+    // }
+
     let displayAssociations = this.props.currentUser.associations_with_workouts.map(ass => ass.id)
     let workoutChoices = this.props.allWorkouts.filter(workout => workout.owner_id !== this.props.currentUser.id)
     let avWorkouts = workoutChoices.filter(workout =>  displayAssociations.includes(workout.owner_id))
@@ -37,6 +46,13 @@ class Map extends React.Component {
       return differentIds.includes(workout.id)
     })
 
+    let filteredMapWorkouts
+    if (this.props.searchTerm !== '') {
+     filteredMapWorkouts = mapWorkouts.filter(workout => workout.pace.includes(this.props.searchTerm))
+   } else {
+     filteredMapWorkouts = mapWorkouts
+   }
+
 
     return (
       <div>
@@ -48,7 +64,7 @@ class Map extends React.Component {
           zoom={this.props.zoom} >
           <CurrentLocation lat={this.props.currentPosition.latitude} lng={this.props.currentPosition.longitude} />
 
-          {mapWorkouts.map(marker => {
+          {filteredMapWorkouts.map(marker => {
               return <Marker  className="existingMarker" key={marker.id}
                                   lat={marker.latitude}
                                   lng={marker.longitude}
