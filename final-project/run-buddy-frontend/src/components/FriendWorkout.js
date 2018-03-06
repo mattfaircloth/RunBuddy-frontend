@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import * as actions from '../actions/index';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
-import {Button, Icon, Col, Card} from 'react-materialize'
+import {Button, Icon, Col, Card, Row} from 'react-materialize'
 
 class FriendWorkout extends React.Component {
 
@@ -38,41 +38,41 @@ class FriendWorkout extends React.Component {
 
     return (
     <div className="parent">
-            <Col m={6} s={12}>
+
 		            <Card className='friend-workout' textClassName='white-text' >
-                  <div>
-                    <h4 className="ui header">
-                      Workout Details:
-                    </h4>
-                  </div>
-                  <div className="content">
+                  <Row>
+                  <Col s={4}>
                     <h5>Runner: </h5>
                       <div className="header">{user.name}</div>
                       <div className="meta">{user.email}</div>
                       <div className="meta">{user.phone}</div>
+                  </Col>
+                  <Col s={4}>
                     <h5 className="ui header">
                       Meetup Point:
                     </h5>
-                      <div className="sub header">{workout.address}</div>
-                      <div className="sub header">
-                        <h5>Workout Info</h5>
-                        <p>Date: {workout.date}</p>
-                        <p>Start Time: {workout.start_time}</p>
-                        <p>Distance: {workout.distance} miles</p>
-                        <p>Pace: {workout.pace} per minute</p>
+                    <div>Date: {workout.date}</div>
+                    <div>Start Time: {workout.start_time}</div>
+                    <div>{workout.address}</div>
+                  </Col>
+                  <Col s={4}>
+                    <h5>Workout Info:</h5>
+
+                    <p>Distance: {workout.distance} miles</p>
+                    <p>Pace: {workout.pace} per minute</p>
+                  </Col>
+
+
+                    </Row>
+                    <Row>
+                      <div>
+                        <Button className='black-button' waves='light' onClick={this.joinWorkout}>Join Workout<Icon left>check</Icon></Button>
+                          <Link to="/runbuddy/workouts">
+                            <Button className='black-button' waves='light'>Back</Button>
+                          </Link>
                       </div>
-                    </div>
-                    <div>
-                      <Button className='black-button' waves='light' onClick={this.joinWorkout}>Join Workout<Icon left>check</Icon></Button>
-                        <Link to="/runbuddy/workouts">
-                          <Button className='black-button' waves='light'>Back</Button>
-                        </Link>
-                    </div>
+                    </Row>
 		            </Card>
-
-            </Col>
-
-
 
 
     </div>
