@@ -72,7 +72,7 @@ class WorkoutsContainer extends React.Component {
             <Col s={2}></Col>
           </Row>
           <Col s={2}>
-        
+
           </Col>
           <Col  s={7} className='map-main'>
             <Map  handleMarkerClick={this.handleMarkerClick} allWorkouts={this.state.allWorkouts} searchTerm={this.state.searchTerm}/>
