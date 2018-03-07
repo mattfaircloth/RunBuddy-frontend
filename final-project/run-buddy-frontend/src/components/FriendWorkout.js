@@ -34,7 +34,7 @@ class FriendWorkout extends React.Component {
       }
     })
     //debugger
-    console.log(this.props.currentUser.user_workouts);
+    //console.log('User', user);
 
     return (
     <div className="parent">
