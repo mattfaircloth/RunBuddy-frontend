@@ -18,6 +18,7 @@ class JoinedWorkoutItem extends React.Component {
    }
 
    render() {
+     //debugger
      //let user = this.props.currentUser.associations_with_workouts.filter(ass => ass.id || parseInt(ass.user_id) === this.props.workout.owner_id)
 
      const user = this.props.currentUser.associations_with_workouts.find(user => {
@@ -28,14 +29,20 @@ class JoinedWorkoutItem extends React.Component {
        }
      })
 
+     let show
+     if (user) {
+       show = <CardPanel className='host'>Host: {user.name}</CardPanel>
+     } else {
+       show = <CardPanel className='host'>This Runner is no longer your friend!</CardPanel>
+     }
 
-     //debugger
-     //console.log(user);
+
+
      console.log('User Workouts:', this.props.currentUser.user_workouts);
      return (
        <div className='workout-display-item'>
          <Card className='large'
-           header={<CardTitle image='../nyc.jpg'><CardPanel className='host'>Host: {user.name}</CardPanel>
+           header={<CardTitle image='../nyc.jpg'>{show}
 
            </CardTitle>}
            actions={<Button waves='light' onClick={this.leaveWorkout}>Leave Workout<Icon left>close</Icon></Button>}>
