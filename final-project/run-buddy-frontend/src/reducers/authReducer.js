@@ -27,21 +27,32 @@ export function authReducer(state = {}, action) {
         //console.log('New User Workouts', newUserWorkouts);
         return {...state, user_workouts: newUserWorkouts}
     case 'UPDATE_USER_FRIENDS':
-    if (state.user_friends.includes(action.user_friend)) {
-      return state
-    } else {
-      return {...state, user_friends: [...state.user_friends, action.user_friend]};
-    }
+      //debugger
+      let user_friendIds = state.user_friends.map(uf => uf.friend_id)
+        if (user_friendIds.includes(action.user_friend.friend_id)) {
+          return state
+        } else {
+          return {...state, user_friends: [...state.user_friends, action.user_friend]};
+        }
 
     case 'UPDATE_SPECIFIC_FRIEND':
     //debugger
-    if (state.friends.includes(action.friend)) {
+
+    let friendsIds = state.friends.map(friend => friend.id)
+    if (friendsIds.includes(action.friend.id)) {
       return state;
     } else {
       return {...state, friends: [...state.friends, action.friend]};
     }
     case 'UPDATE_ASSOCIATION_WITH_WORKOUTS':
-          return {...state, associations_with_workouts: [...state.associations_with_workouts, action.friend, ...action.friend.friends]}
+    //debugger
+    let associationIds = state.associations_with_workouts.map(ass => ass.id)
+    if (associationIds.includes(action.friend.id)) {
+      return state;
+    } else {
+      return {...state, associations_with_workouts: [...state.associations_with_workouts, action.friend, ...action.friend.friends]}
+    }
+
     case 'DELETE_USER_FRIENDS':
           let newFriends = state.friends.filter(friend => friend.id !== action.id)
           //newFriends.splice(newFriends.indexOf(action.id), 1)
