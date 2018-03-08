@@ -12,7 +12,8 @@ class WorkoutsContainer extends React.Component {
 
   state = {
     allWorkouts: [],
-    searchTerm: '',
+    paceSearchTerm: '',
+    runnerSearchTerm:''
   }
 
 
@@ -37,9 +38,15 @@ class WorkoutsContainer extends React.Component {
     this.props.history.push(`/runbuddy/workouts/${workoutSlug}`);
   }
 
-  handleInput = (event) => {
+  handlePaceInput = (event) => {
     this.setState({
-      searchTerm: event.target.value,
+      paceSearchTerm: event.target.value,
+    })
+  }
+
+  handleRunnerInput = (event) => {
+    this.setState({
+      runnerSearchTerm: event.target.value,
     })
   }
 
@@ -66,16 +73,19 @@ class WorkoutsContainer extends React.Component {
             </Col>
             <Col s={6}>
               <form className='search-bar-2'>
-                <input type='search' placeholder='Search for Workouts by Pace' onChange={this.handleInput}></input>
+                <input type='search' placeholder='Search for Workouts by Pace' onChange={this.handlePaceInput}></input>
+              </form>
+              <form className='search-bar-2'>
+                <input type='search' placeholder='Search for Workouts by Runner' onChange={this.handleRunnerInput}></input>
               </form>
             </Col>
             <Col s={2}></Col>
           </Row>
           <Col s={2}>
-
+            <h5>Filters:</h5>
           </Col>
           <Col  s={7} className='map-main'>
-            <Map  handleMarkerClick={this.handleMarkerClick} allWorkouts={this.state.allWorkouts} searchTerm={this.state.searchTerm}/>
+            <Map  handleMarkerClick={this.handleMarkerClick} allWorkouts={this.state.allWorkouts} paceSearchTerm={this.state.paceSearchTerm} runnerSearchTerm={this.state.runnerSearchTerm}/>
           </Col>
           <Col  s={3} className='friends-main'>
             <Friends />

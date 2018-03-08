@@ -1,5 +1,5 @@
 import React from 'react'
-import {Navbar, NavItem, SideNav, SideNavItem, Button} from 'react-materialize'
+import {Navbar, NavItem, SideNav, SideNavItem, Button, MediaBox} from 'react-materialize'
 import Logout from './Logout'
 import { connect } from 'react-redux'
 import * as actions from '../actions/index';

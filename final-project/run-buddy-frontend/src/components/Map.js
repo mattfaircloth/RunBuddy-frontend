@@ -46,11 +46,28 @@ class Map extends React.Component {
       return differentIds.includes(workout.id)
     })
 
+    console.log('Map Workouts', mapWorkouts);
+
+    let paceMapWorkouts
     let filteredMapWorkouts
-    if (this.props.searchTerm !== '') {
-     filteredMapWorkouts = mapWorkouts.filter(workout => workout.pace.includes(this.props.searchTerm))
+
+    if (this.props.paceSearchTerm !== '') {
+     paceMapWorkouts = mapWorkouts.filter(workout => workout.pace.includes(this.props.paceSearchTerm))
    } else {
-     filteredMapWorkouts = mapWorkouts
+     paceMapWorkouts = mapWorkouts
+   }
+
+   let y = paceMapWorkouts.map(workout => workout.owner_id)
+   let associationsForSearch = this.props.currentUser.associations_with_workouts.map(ass => ass)
+   let x = associationsForSearch.filter(ass => y.includes(ass.id))
+
+   if (this.props.runnerSearchTerm !== '') {
+     let q = x.filter(ass => ass.name.toLowerCase().includes(this.props.runnerSearchTerm.toLowerCase()))
+     let qIds = q.map(runner => runner.id)
+     filteredMapWorkouts = paceMapWorkouts.filter(workout => qIds.includes(workout.owner_id))
+     console.log('Filtered', filteredMapWorkouts);
+   } else {
+     filteredMapWorkouts = paceMapWorkouts
    }
 
 

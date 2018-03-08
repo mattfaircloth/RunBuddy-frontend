@@ -59,7 +59,7 @@ class FriendWorkout extends React.Component {
                     <h5>Workout Info:</h5>
 
                     <p>Distance: {workout.distance} miles</p>
-                    <p>Pace: {workout.pace} per minute</p>
+                    <p>Pace: {workout.pace}</p>
                   </Col>
 
 
