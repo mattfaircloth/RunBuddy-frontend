@@ -23,7 +23,7 @@ class FriendDetail extends React.Component {
      return (
        <div >
          <Collapsible popout defaultActiveKey={1}>
-             <CollapsibleItem header={this.props.friend.name} icon='add'>
+             <CollapsibleItem header={this.props.friend.name} icon='perm_identity'>
                <div>{this.props.friend.email}</div>
                <div>{this.props.friend.phone}</div><br></br>
                {friends}

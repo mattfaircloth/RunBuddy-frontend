@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import NavBar from './NavBar';
 import withAuth from '../hocs/withAuth';
-import {Slider, Slide, CardPanel} from 'react-materialize'
+import {Slider, Slide, CardPanel, Row} from 'react-materialize'
 
 
 class Home extends React.Component {
@@ -24,7 +24,14 @@ class Home extends React.Component {
         <NavBar />
         <div>
           <div>
+            <Row></Row>
+            <Row></Row>
+            <Row></Row>
             {loggedIn ? (<div><h3>Welcome, {this.props.currentUser.name.split(" ")[0]}!</h3></div>) : null}
+            <Row></Row>
+            <Row></Row>
+            <Row></Row>
+            <Row></Row>
             <Slider>
               <Slide src='RunningNYC.jpg'>
 

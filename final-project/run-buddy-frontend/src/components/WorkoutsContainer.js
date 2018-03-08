@@ -6,7 +6,7 @@ import * as actions from '../actions/index'
 import { Switch, Route } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import Friends from './Friends'
-import {Row, Col, Dropdown, Button, NavItem} from 'react-materialize'
+import {Row, Col, Dropdown, Button, NavItem, Icon} from 'react-materialize'
 
 class WorkoutsContainer extends React.Component {
 
@@ -72,19 +72,22 @@ class WorkoutsContainer extends React.Component {
             <Col s={4}>
             </Col>
             <Col s={6}>
-              <form className='search-bar-2'>
-                <input type='search' placeholder='Search for Workouts by Pace' onChange={this.handlePaceInput}></input>
-              </form>
-              <form className='search-bar-2'>
-                <input type='search' placeholder='Search for Workouts by Runner' onChange={this.handleRunnerInput}></input>
-              </form>
+
             </Col>
             <Col s={2}></Col>
           </Row>
-          <Col s={2}>
-            <h5>Filters:</h5>
+          <Col s={3} >
+            <div className='main-filter'>
+              <h5><Icon>search</Icon> Filters:</h5>
+                <form className='search-bar-2'>
+                  <input type='search' placeholder='Search for Workouts by Pace' onChange={this.handlePaceInput}></input>
+                </form>
+                <form className='search-bar-2'>
+                  <input type='search' placeholder='Search for Workouts by Runner' onChange={this.handleRunnerInput}></input>
+                </form>
+            </div>
           </Col>
-          <Col  s={7} className='map-main'>
+          <Col  s={6} className='map-main'>
             <Map  handleMarkerClick={this.handleMarkerClick} allWorkouts={this.state.allWorkouts} paceSearchTerm={this.state.paceSearchTerm} runnerSearchTerm={this.state.runnerSearchTerm}/>
           </Col>
           <Col  s={3} className='friends-main'>

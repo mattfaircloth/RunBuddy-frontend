@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
+import {Row, Icon} from 'react-materialize'
 
 
 
@@ -50,6 +51,13 @@ class WorkoutForm extends React.Component {
 
   render() {
     return (
+      <div>
+      <Row></Row>
+      <Row></Row>
+      <Row></Row>
+      <Row></Row>
+      <Row></Row>
+      <Row></Row>
       <form className="ui form">
         <div className="ui grid container">
           <div className="ui two column stackable grid">
@@ -59,29 +67,29 @@ class WorkoutForm extends React.Component {
                     <h4 className="ui dividing header">New Workout</h4>
 
                     <div className="field">
-                      <label>Start Time</label>
+                      <label>Start Time <Icon>group</Icon></label>
                         <input onChange={this.handleChange} type="text" name="start_time" placeholder="Start Time"/>
                     </div>
 
                     <div className="field">
-                      <label>Date</label>
+                      <label>Date <Icon>event_note</Icon></label>
                         <input onChange={this.handleChange} type="text" name="date" placeholder="Date"/>
                     </div>
 
 
                     <div className="field">
-                      <label>Address</label>
+                      <label>Address <Icon>pin_drop</Icon></label>
                       <input onChange={this.handleChange} type="text" name="address" placeholder="Address"/>
                     </div>
 
 
                     <div className="field">
-                      <label>Distance</label>
+                      <label>Distance <Icon>near_me</Icon></label>
                       <input onChange={this.handleChange} type="number" name="distance" placeholder="Distance in Miles"/>
                     </div>
 
                     <div className="field">
-                      <label>Pace</label>
+                      <label>Pace <Icon>directions_run</Icon></label>
                       <input onChange={this.handleChange} type="text" name="pace" placeholder="Pace"/>
                     </div>
 
@@ -91,6 +99,7 @@ class WorkoutForm extends React.Component {
           </div>
         </div>
       </form>
+      </div>
     )
   }
 }

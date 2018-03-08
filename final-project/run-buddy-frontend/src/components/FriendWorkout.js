@@ -42,24 +42,24 @@ class FriendWorkout extends React.Component {
 		            <Card className='friend-workout' textClassName='white-text' >
                   <Row>
                   <Col s={4}>
-                    <h5>Runner: </h5>
-                      <div className="header">{user.name}</div>
-                      <div className="meta">{user.email}</div>
-                      <div className="meta">{user.phone}</div>
+                    <h4>Runner: </h4>
+                      <h5 className="header">{user.name}</h5>
+                      <h5 className="meta">{user.email}</h5>
+                      <h5 className="meta">{user.phone}</h5>
                   </Col>
                   <Col s={4}>
-                    <h5 className="ui header">
+                    <h4 className="ui header">
                       Meetup Point:
-                    </h5>
-                    <div>Date: {workout.date}</div>
-                    <div>Start Time: {workout.start_time}</div>
-                    <div>{workout.address}</div>
+                    </h4>
+                    <h5>Date: {workout.date}</h5>
+                    <h5>Start Time: {workout.start_time}</h5>
+                    <h5>{workout.address}</h5>
                   </Col>
                   <Col s={4}>
-                    <h5>Workout Info:</h5>
+                    <h4>Workout Info:</h4>
 
-                    <p>Distance: {workout.distance} miles</p>
-                    <p>Pace: {workout.pace}</p>
+                    <h5>Distance: {workout.distance} miles</h5>
+                    <h5>Pace: {workout.pace}</h5>
                   </Col>
 
 
