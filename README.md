@@ -1,5 +1,6 @@
 # RunBuddy
 
+You can view a demo of RunBuddy here: [click here](https://youtu.be/Zp9GPLzwdtk)
 You can view the RunBuddy backend here: [click here](https://github.com/mattfaircloth/run-buddy-backend)
 
 RunBuddy is a web app that allows users to find other runners based on their current location. This web application uses the Google Maps and GeoCoding APIs, as well as a custom back-end Rails API. 
